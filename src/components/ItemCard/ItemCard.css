@@ -1,0 +1,20 @@
+.card__name {
+  font-family: "CabinetGrotesk", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 20px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__image {
+  width: 328px;
+  height: 328px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+}

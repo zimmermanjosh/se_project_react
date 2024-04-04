@@ -1,0 +1,22 @@
+.weather_selector:checked {
+  background-color: black;
+}
+.modal__input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal__input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.modal__buttons {
+  justify-content: space-between;
+}
+
+.input__button {
+  margin-right: 10px;
+  margin-top: 8px;
+}

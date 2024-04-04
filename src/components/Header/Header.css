@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 20px;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+}
+
+.header__logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__avatar-logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.header__dateTime {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__name {
+  display: flex;
+  color: black;
+}
+
+.header__clothes-button {
+  border: none;
+  background-color: white;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+}
+
+.header__toggle_switch-button {
+  border: none;
+  background-color: white;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+}

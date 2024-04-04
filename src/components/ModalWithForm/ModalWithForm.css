@@ -1,0 +1,59 @@
+.modal {
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+}
+
+.modal__content {
+  background-color: white;
+  max-width: 496px;
+  width: 100%;
+  padding: 34px 36px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal__close-button {
+  border: none;
+  background-image: url(../../images/modal/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.modal__close-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.submit__button {
+  height: 36px;
+  width: 124px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.submit__button:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+.submit__button:disabled {
+  background-color: lightgray;
+}

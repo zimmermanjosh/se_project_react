@@ -1,0 +1,23 @@
+.modal {
+  font-family: "Cabinet Grotesk", sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.preview__close-button {
+  border: none;
+  background-image: url(../../images/modal/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  justify-content: flex-end;
+  top: 24px;
+  right: 24px;
+}
+
+.preview__close-button:hover {
+  cursor: pointer;
+}

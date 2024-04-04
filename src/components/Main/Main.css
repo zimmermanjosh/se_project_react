@@ -1,0 +1,18 @@
+.main {
+  padding: 0 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+}
+
+.card__section {
+  margin-top: 20px;
+}
+
+.card__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
