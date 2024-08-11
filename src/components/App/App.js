@@ -36,7 +36,7 @@ function App() {
     setSelectedCard(card);
   };
 
-  console.log(selectedCard);
+  //console.log(selectedCard);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -48,15 +48,15 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        console.log(temperature);
+        //console.log(temperature);
         setTemp(temperature);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
   }, []);
-  console.log(temp);
-  console.log(currentTemperatureUnit);
+  //console.log(temp);
+  //console.log(currentTemperatureUnit);
   //const currentLocation = { Location };
   return (
     <div>

@@ -75,3 +75,10 @@ export const weatherOptions = [
     type: "storm",
   },
 ];
+
+
+export const tempCompareValues = {
+  hot:  70,
+  warm: 66,
+  cold: 55
+};

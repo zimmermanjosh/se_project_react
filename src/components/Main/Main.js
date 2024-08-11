@@ -3,25 +3,26 @@ import WeatherCard from "../Weather/WeatherCard.js";
 import { defaultClothingItems, weatherOptions } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
+import { tempCompareValues } from "../../utils/Constants.js";
 
-function Main({ weatherTemp, onSelectedCard }) {
-  const weatherType = useMemo(() => {
-    if (weatherTemp >= 86) {
-      return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-      return "warm";
-    } else if (weatherTemp <= 65) {
-      return "cold";
-    }
-  }, [weatherTemp]);
+function Main({ weatherTemp, onSelectedCard}) {
+ const weatherType = useMemo(() => {
+  if (weatherTemp >= tempCompareValues.hot) {
+    return "hot";
+  } else if (weatherTemp >= tempCompareValues.cold && weatherTemp <= tempCompareValues.hot) {
+    return "warm";
+  } else if (weatherTemp <= tempCompareValues.cold) {
+    return "cold";
+  }
+}, [weatherTemp]);
 
-  console.log(weatherType);
+  //console.log(weatherType);
 
   const filteredCards = defaultClothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
 
-  console.log(filteredCards);
+  //console.log(filteredCards);
 
   return (
     <main className="main">
