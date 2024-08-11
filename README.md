@@ -112,3 +112,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
     - dependencies/packages updates
     - "nvm install v20.16.0"
     - README.MD Updates
+    - update toggle switch 
+    
