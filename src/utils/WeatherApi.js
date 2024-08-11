@@ -28,9 +28,14 @@ export const parseWeatherData = (data) => {
   const weatherTemp = weatherMain && weatherMain.temp;
   //console.log("!!weatherMain:", Math.ceil(weatherTemp));
 
-  const weather = { weatherTemp: { F: Math.round(weatherTemp), C: Math.round((weatherTemp - 32) * 5 / 9) } };
+  const weather = {
+    weatherTemp: {
+      F: Math.round(weatherTemp),
+      C: Math.round((weatherTemp - 32) * 5 / 9)
+    }
+  };
   console.log("weather:", weather);
-  return (weatherTemp);
+  return (weather);
 
 };
 

@@ -48,20 +48,20 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        //console.log(temperature);
+        console.log(temperature);
         setTemp(temperature);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
   }, []);
-  //console.log(temp);
+  console.log(temp);
   //console.log(currentTemperatureUnit);
   //const currentLocation = { Location };
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }} >
-      <Header onCreateModal={handleCreateModal} temp={temp} />
+      <Header onCreateModal={handleCreateModal}/>
       <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
