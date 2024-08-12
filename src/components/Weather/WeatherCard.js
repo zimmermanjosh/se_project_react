@@ -5,7 +5,6 @@ import { weatherOptions } from "../../utils/Constants.js";
 
 const WeatherCard = ({ weatherTemp, day, type }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
   const imageSrc = weatherOptions.filter((item) => {
     return item.day === day && item.type === type;
   });

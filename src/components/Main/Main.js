@@ -8,7 +8,10 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 function Main({ weatherTemp, onSelectedCard }) {
 
   const { currentTemperatureUnit  } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherTemp?.[currentTemperatureUnit] || 999;
+  console.log("Current Temperature Unit:", currentTemperatureUnit);
+  console.log("Weather Temperature Object:", weatherTemp);
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 99;
+  console.log("Temperature:", temp);
   const weatherType = useMemo(() => {
     if (currentTemperatureUnit === "F") {
       if (temp >= 86) {
