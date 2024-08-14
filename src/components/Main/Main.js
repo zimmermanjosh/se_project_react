@@ -68,6 +68,7 @@ import WeatherCard from "../Weather/WeatherCard.js";
 import { defaultClothingItems, weatherOptions } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
+import version  from "../../version.js";
 
 function Main({ weatherTemp, onSelectedCard }) {
   const weatherType = useMemo(() => {
@@ -90,6 +91,7 @@ function Main({ weatherTemp, onSelectedCard }) {
 
   return (
     <main className="main">
+      {/*<h1>App Version: {version} </h1>*/}
       <WeatherCard day={false} type="rain" weatherTemp={weatherTemp} />
       <section className="card__section" id="card-section">
         Today is {weatherTemp} Fº/ You may want to wear:

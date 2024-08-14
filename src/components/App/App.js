@@ -10,8 +10,11 @@ import {
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
+import version  from "../../version.js";
+
+
 function App() {
-  const weatherTemp = "87°F";
+  //const weatherTemp = "87°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -54,7 +57,11 @@ function App() {
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
+
+
+    console.log(`App Version: ${version}`); // Log the version number to the console
   }, []);
+
   console.log(temp);
   //console.log(currentTemperatureUnit);
   //const currentLocation = { Location };
