@@ -68,7 +68,7 @@ import WeatherCard from "../Weather/WeatherCard.js";
 import { defaultClothingItems, weatherOptions } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
-import { log } from "../../utils/logger.js";
+import log  from "../../utils/logger.js";
 
 
 function Main({ weatherTemp, onSelectedCard }) {

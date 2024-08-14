@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import logoImage from "../../images/dashboard/logo.svg";
 import avatarImage from "../../images/dashboard/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
+import log from "../../utils/logger.js";
 
 const Header = ({ onCreateModal }) => {
   //console.log("Header");
@@ -25,8 +26,8 @@ const Header = ({ onCreateModal }) => {
             const state = data.results[0].components.state;
             setLocation(`${city}, ${state}`);
 
-            console.log("City:", city);
-            console.log("State:", state);
+            log("City:", city);
+            log("State:", state);
           })
           .catch((error) => {
             console.error("Error fetching location data:", error);
