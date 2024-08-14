@@ -12,6 +12,14 @@ In this sprint, you'll continue working on the “WTWR” web application. Your 
 
 - You'll also set up a mock server and write some code to make API calls to it. This mock server will mimic the behavior of the back end that you'll start building in Sprint 12.
 
+## Added Features 
+- added versioning in console (read from package.json)
+- added feature pull browser info for long and latitude use through project for location and temp 
+
+## TODO
+- add modal for long, lat input
+- set default long, lat for project  
+
 ## Links
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
