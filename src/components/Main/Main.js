@@ -70,7 +70,6 @@ import { useMemo } from "react";
 import "./Main.css";
 import log  from "../../utils/logger.js";
 
-
 function Main({ weatherTemp, onSelectedCard }) {
   const weatherType = useMemo(() => {
     if (weatherTemp >= 86) {

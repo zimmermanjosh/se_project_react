@@ -1,6 +1,6 @@
 // stupid simple logging function for global on-demand logging
 
-const isLoggingEnabled = false;
+const isLoggingEnabled = true;
 
 const log = (...args) => {
     if (isLoggingEnabled) {

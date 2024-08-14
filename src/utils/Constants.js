@@ -106,3 +106,9 @@ export const tempCompareValues = {
   warm: 66,
   cold: 55
 };
+
+export const weatherAPIData = {
+  latitude: 32.779167,
+  longitude: -96.80889,
+  APIkey: "9ed2af8b44ccce6e0959621de59c2764"
+} 
