@@ -11,7 +11,7 @@ import {
 } from "../../utils/WeatherApi.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 function App() {
-  //const weatherTemp = "87°F";
+  const weatherTemp = "87°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);

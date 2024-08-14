@@ -24,6 +24,9 @@ const Header = ({ onCreateModal }) => {
             const city = data.results[0].components.city;
             const state = data.results[0].components.state;
             setLocation(`${city}, ${state}`);
+
+            console.log("City:", city);
+            console.log("State:", state);
           })
           .catch((error) => {
             console.error("Error fetching location data:", error);

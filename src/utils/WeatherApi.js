@@ -22,6 +22,8 @@ export const getForecastWeather = () => {
   return weatherApi;
 };
 
+
+/*
 export const parseWeatherData = (data) => {
   console.log(data);
   const weatherMain = data.main;
@@ -35,7 +37,14 @@ export const parseWeatherData = (data) => {
     }
   };
   console.log("weather:", weather);
-  return (weather);
+  return (weather);*/
+
+  export const parseWeatherData = (data) => {
+    console.log(data);
+    const weatherMain = data.main;
+    const weatherTemp = weatherMain && weatherMain.temp;
+    console.log("!!weatherMain:", Math.ceil(weatherTemp));
+    return Math.ceil(weatherTemp);
 
 };
 
