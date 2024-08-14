@@ -10,11 +10,11 @@ import {
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
-import version  from "../../version.js";
 
+import version  from "../../version.js";
+import log from "../../utils/logger.js";
 
 function App() {
-  //const weatherTemp = "87°F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -39,7 +39,7 @@ function App() {
     setSelectedCard(card);
   };
 
-  //console.log(selectedCard);
+  log(selectedCard);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -51,7 +51,7 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        console.log(temperature);
+        log(temperature);
         setTemp(temperature);
       })
       .catch((error) => {
@@ -62,9 +62,9 @@ function App() {
     console.log(`App Version: ${version}`); // Log the version number to the console
   }, []);
 
-  console.log(temp);
-  //console.log(currentTemperatureUnit);
-  //const currentLocation = { Location };
+  log(temp);
+  log(currentTemperatureUnit);
+  
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }} >
