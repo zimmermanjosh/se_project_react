@@ -22,7 +22,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleOnChange = (imageValue) => {
-    console.log("imageValue", imageValue);
+    log("imageValue", imageValue);
     setImage(imageValue);
   };
 
