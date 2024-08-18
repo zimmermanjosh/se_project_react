@@ -43,11 +43,32 @@ export const weatherOptions = [
     day: true,
     type: "cloudy",
   },
-  { url: require("../images/day/fog.svg").default, day: true, type: "fog" },
-  { url: require("../images/day/rain.svg").default, day: true, type: "rain" },
-  { url: require("../images/day/snow.svg").default, day: true, type: "snow" },
-  { url: require("../images/day/storm.svg").default, day: true, type: "storm" },
-  { url: require("../images/day/sunny.svg").default, day: true, type: "sunny" },
+  {
+    url: require("../images/day/fog.svg").default,
+    day: true,
+    type: "fog"
+  },
+  {
+    url: require("../images/day/rain.svg").default,
+    day: true,
+    type: "rain"
+  },
+  {
+    url: require("../images/day/snow.svg").default,
+    day: true,
+    type: "snow"
+  },
+  {
+    url: require("../images/day/storm.svg").default,
+    day: true,
+    type: "storm" 
+  },
+  {
+    url: require("../images/day/sunny.svg").default,
+    day: true,
+    type: "sunny"
+  },
+  //night options
   {
     url: require("../images/night/clear_sunny.svg").default,
     day: false,
@@ -58,7 +79,11 @@ export const weatherOptions = [
     day: false,
     type: "cloudy",
   },
-  { url: require("../images/night/fog.svg").default, day: false, type: "fog" },
+  {
+    url: require("../images/night/fog.svg").default,
+    day: false,
+    type: "fog"
+  },
   {
     url: require("../images/night/rain.svg").default,
     day: false,
@@ -75,3 +100,16 @@ export const weatherOptions = [
     type: "storm",
   },
 ];
+
+
+export const tempCompareValues = {
+  hot:  70,
+  warm: 66,
+  cold: 55
+};
+
+export const weatherAPIData = {
+  latitude: 32.779167,
+  longitude: -96.80889,
+  APIkey: "9ed2af8b44ccce6e0959621de59c2764"
+} 

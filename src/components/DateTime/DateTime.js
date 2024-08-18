@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import log from "../../utils/logger.js";
 
 export const DateTime = () => {
+  //console.log("DateTime");
+
   // Initialize the date state using the useState hook
   const [date, setDate] = useState(new Date());
 

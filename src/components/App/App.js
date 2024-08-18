@@ -9,15 +9,22 @@ import {
   getForecastWeather,
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
+import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
+
+import version  from "../../version.js";
+import log from "../../utils/logger.js";
+
 function App() {
-  const weatherTemp = "87°F";
+  console.log("App");
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [image, setImage] = useState("");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleOnChange = (imageValue) => {
-    console.log("imageValue", imageValue);
+    log("imageValue", imageValue);
     setImage(imageValue);
   };
 
@@ -34,25 +41,36 @@ function App() {
     setSelectedCard(card);
   };
 
-  console.log(selectedCard);
+  log(selectedCard);
+
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+
+  };
 
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        console.log(temperature);
+        log(temperature);
         setTemp(temperature);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
-  }, []);
-  console.log(temp);
 
-  //const currentLocation = { Location };
+
+    console.log(`App Version: ${version}`); // Log the version number to the console
+  }, []);
+
+  log(temp);
+  log(currentTemperatureUnit);
+  
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} temp={temp} />
+      <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }} >
+      <Header onCreateModal={handleCreateModal}/>
       <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
@@ -122,6 +140,7 @@ function App() {
       {activeModal === "preview" && (
         <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
