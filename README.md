@@ -127,3 +127,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
     - cleaned up old comments 
     - reverted code to get headers working and not adding errant code 
     - started over -- From begining
+
+### 2024 08 18 
+
+    - implement temp switch
+    - implment context
