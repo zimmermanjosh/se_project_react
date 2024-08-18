@@ -8,9 +8,8 @@ import log from "../../utils/logger.js";
 import { getForecastWeather } from "../../utils/WeatherApi.js";
 
 const Header = ({ onCreateModal }) => {
-  log("!! Header");
+  console.log("!! Header");
   const [location, setLocation] = useState(null);
-  //const []
 
   useEffect(() => {
     // Check if Geolocation is available in the browser
@@ -34,7 +33,7 @@ const Header = ({ onCreateModal }) => {
             console.log("State:", state);
 
             // pass the location data to the parent weatherAPI component
-            getForecastWeather(latitude, longitude)
+            getForecastWeather(latitude,longitude)
             .then((weatherData) => {
               log("Weather Data:", weatherData);
             })

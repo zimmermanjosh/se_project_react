@@ -68,6 +68,7 @@ export const weatherOptions = [
     day: true,
     type: "sunny"
   },
+  //night options
   {
     url: require("../images/night/clear_sunny.svg").default,
     day: false,

@@ -15,6 +15,8 @@ import version  from "../../version.js";
 import log from "../../utils/logger.js";
 
 function App() {
+  console.log("App");
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
