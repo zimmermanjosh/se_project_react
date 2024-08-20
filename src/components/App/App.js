@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   log(temp);
-  log(currentTemperatureUnit);
+  console.log(currentTemperatureUnit);
   
   return (
     <div>
