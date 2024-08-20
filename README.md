@@ -120,7 +120,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
     - dependencies/packages updates
     - "nvm install v20.16.0"
     - README.MD Updates
-    - update toggle switch 
+    - update toggle switch
+
 ### 2024 08 18
 
     - updated code to use global logger 
@@ -128,7 +129,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
     - reverted code to get headers working and not adding errant code 
     - started over -- From begining
 
-### 2024 08 18 
+### 2024 08 18
 
     - implement temp switch
     - implment context
+
+### Github
+
+    - https://github.com/zimmermanjosh/se_project_react_WTWR_part2
+
+### LocalDir
+
+    - /Users/jozimmerman/Dev/se_project_react_WTWR_part2
