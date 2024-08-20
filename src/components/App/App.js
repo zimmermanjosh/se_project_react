@@ -20,7 +20,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
-  const [image, setImage] = useState("");
+  const [setImage] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleOnChange = (imageValue) => {
