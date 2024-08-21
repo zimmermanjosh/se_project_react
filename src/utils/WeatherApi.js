@@ -6,12 +6,11 @@ const latitude = 32.779167;
 const longitude = -96.80889;
 const APIkey = "9ed2af8b44ccce6e0959621de59c2764";
 const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`;
-//const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherAPIData.APIkey}`;
+
 
 // use lat and long from browser location
-export const getForecastWeather = (latitude, longitude) => {
+export const getForecastWeather = () => {
   console.log("!! WeatherAPI");
-  //const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherAPIData.APIkey}`;
 
   const weatherApi = fetch(apiRequest).then((res) => {
     console.log(res);
@@ -27,9 +26,16 @@ export const getForecastWeather = (latitude, longitude) => {
 
   export const parseWeatherData = (data) => {
     log(data);
-    const weatherMain = data.main;
-    const weatherTemp = weatherMain && weatherMain.temp;
-    log("!!weatherMain:", Math.ceil(weatherTemp));
-    return Math.ceil(weatherTemp);
+    const main = data.main;
+    const temperature =main && main.temp;
+    const weather = {temperature: {F: Math.round(temperature), C:Math.round((temperature - 32) * 5/9)} };
+
+    console.log(weather.temperature);
+    
+    return weather;
+    //return Math.ceil(temperature);
+
+    //weather.temperature.F = data.main.temp;
+    //weather.temperature.C = Math.round((data.main.temp - 32) * 5/9);
 
 };
