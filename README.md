@@ -102,7 +102,7 @@ then
 
 ## Run Commands
 
-`npm run build` - Build Production (Vite + React)
+`npm run build` - Build Production (React)
 
 `npm run clean` - Removes build artifacts '/node_modules' && '/build'
 
@@ -133,6 +133,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
     - implement temp switch
     - implment context
+
+
+### 2024 08 20
+
+    - weatherApi
+    - fix context
+    - fix toggle
 
 ### Github
 
