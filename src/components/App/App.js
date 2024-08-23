@@ -48,6 +48,10 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
+  const onAddItem = (event) => {
+    console.log(event);
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -73,7 +77,13 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
         <Footer />
-        {activeModal === "create" && <AddItemModal />}
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={onAddItem}
+          />
+        )}
         {activeModal === "preview" && (
           <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
         )}

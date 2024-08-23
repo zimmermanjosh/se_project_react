@@ -8,6 +8,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       title="New Garment"
       buttonText="Add Garment"
       onClose={handleCloseModal}
+      isOpen={isOpen}
+      onSubmit={onAddItem}
     >
       <div className="modal__overlay">
         <label className="modal__input-label">
