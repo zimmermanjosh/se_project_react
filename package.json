@@ -29,7 +29,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf build && rm -rf node_modules",
-    "prebuild": "npm run clean && npm install"
+    "prebuild": "npm run clean && npm install",
+    "permitScripts": "chmod +x scripts/*",
+    "nvmSelect": "sh scripts/nvmSelect.sh"
   },
   "browserslist": {
     "production": [

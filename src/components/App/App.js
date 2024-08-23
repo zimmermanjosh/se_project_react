@@ -9,9 +9,9 @@ import {
   getForecastWeather,
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
-import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
-
-import version  from "../../version.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
+import AddItemModal from "../../AddItemModal/AddItemModal.js";
+import version from "../../version.js";
 import log from "../../utils/logger.js";
 
 function App() {
@@ -46,7 +46,6 @@ function App() {
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
-
   };
 
   useEffect(() => {
@@ -60,86 +59,24 @@ function App() {
         console.error("Error fetching weather data:", error);
       });
 
-
     console.log(`App Version: ${version}`); // Log the version number to the console
   }, []);
 
   log(temp);
   console.log(currentTemperatureUnit);
-  
+
   return (
     <div>
-      <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }} >
-      <Header onCreateModal={handleCreateModal}/>
-      <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
-      <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm
-          title="New Garment"
-          buttonText="Add Garment"
-          onClose={handleCloseModal}
-        >
-          <div className="modal__overlay">
-            <label className="modal__input-label">
-              <input
-                className="modal__input"
-                type="text"
-                minLength={1}
-                maxLength={23}
-                name="name"
-                placeholder="Name"
-              />
-            </label>
-            <label className="modal__input-label">
-              image
-              <input
-                className="modal__input"
-                minLength={1}
-                type="url"
-                name="link"
-                placeholder="Image URL"
-                onChange={(input) => handleOnChange(input.target.value)}
-              />
-            </label>
-            <p>Select the weather type</p>
-            <div className="weather_selector">
-              <div className="modal__buttons">
-                <input
-                  className="input__button"
-                  type="radio"
-                  name="weather"
-                  id="hot"
-                  value="hot"
-                />
-                <label> hot </label>
-              </div>
-              <div>
-                <input
-                  className="input__button"
-                  type="radio"
-                  id="warm"
-                  value="warm"
-                  name="weather"
-                />
-                <label> warm </label>
-              </div>
-              <div>
-                <input
-                  className="input__button"
-                  type="radio"
-                  name="weather"
-                  id="cold"
-                  value="cold"
-                />
-                <label> cold </label>
-              </div>
-            </div>
-          </div>
-        </ModalWithForm>
-      )}
-      {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-      )}
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <Header onCreateModal={handleCreateModal} />
+        <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
+        <Footer />
+        {activeModal === "create" && <AddItemModal />}
+        {activeModal === "preview" && (
+          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
