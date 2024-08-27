@@ -1,7 +1,8 @@
 import "./itemModal.css";
+import log from "../../utils/logger";
 
 const ItemModal = ({ selectedCard, onClose }) => {
-  console.log("ItemModal");
+  log("ItemModal");
 
   return (
     <div className={"modal"}>

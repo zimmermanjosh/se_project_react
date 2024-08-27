@@ -10,10 +10,10 @@ const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitu
 
 // use lat and long from browser location
 export const getForecastWeather = () => {
-  console.log("!! WeatherAPI");
+  log("!! WeatherAPI");
 
   const weatherApi = fetch(apiRequest).then((res) => {
-    console.log(res);
+    log(res);
     if (res.ok) {
       return res.json();
     } else {
@@ -30,7 +30,7 @@ export const getForecastWeather = () => {
     const temperature =main && main.temp;
     const weather = {temperature: {F: Math.round(temperature), C:Math.round((temperature - 32) * 5/9)} };
 
-    console.log(weather.temperature);
+    log(weather.temperature);
     
     return weather;
     //return Math.ceil(temperature);

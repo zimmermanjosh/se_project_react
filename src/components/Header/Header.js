@@ -8,7 +8,7 @@ import log from "../../utils/logger.js";
 import { getForecastWeather } from "../../utils/WeatherApi.js";
 
 const Header = ({ onCreateModal }) => {
-  console.log("!! Header");
+  log("!! Header");
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const Header = ({ onCreateModal }) => {
       navigator.geolocation.getCurrentPosition((position) => {
         // Retrieve the latitude and longitude from the position object
         const { latitude, longitude } = position.coords;
-        console.log("Latitude:", latitude);
-        console.log("Longitude:", longitude);
+        log("Latitude:", latitude);
+        log("Longitude:", longitude);
 
         fetch(
           `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=20740fa69bd84624bf45f4a801ef40c3`,
@@ -29,8 +29,8 @@ const Header = ({ onCreateModal }) => {
             const state = data.results[0].components.state;
             setLocation(`${city}, ${state}`);
 
-            console.log("City:", city);
-            console.log("State:", state);
+            log("City:", city);
+            log("State:", state);
 
             // pass the location data to the parent weatherAPI component
             getForecastWeather(latitude,longitude)

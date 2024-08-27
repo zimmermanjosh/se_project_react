@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import "./ToggleSwitch.css";
 import { CurrentTemperatureUnitContext }from "../../contexts/CurrentTemperatureUnitContext.js";
+import log from "../../utils/logger.js";
+
 const ToggleSwitch = () => {
-  console.log("ToggleSwitch");
+  log("ToggleSwitch");
 
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(CurrentTemperatureUnitContext)
-  console.log(currentTemperatureUnit);
+  log(currentTemperatureUnit);
   return (
     <label className="switch">
       <input type="checkbox" className="switch__box" onChange={handleToggleSwitchChange} />

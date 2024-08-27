@@ -5,11 +5,12 @@ import { useMemo } from "react";
 import "./Main.css";
 import log  from "../../utils/logger.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
+import { useContext } from "react";
 
 function Main({ weatherTemp, onSelectedCard }) {
-  console.log("Main");
+  log("Main");
   const { currentTemperatureUnit  } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTemperatureUnit);
+  log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999
   
   const weatherType = useMemo(() => {

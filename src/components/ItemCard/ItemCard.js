@@ -1,7 +1,8 @@
 import "./ItemCard.css";
+import log from "../../utils/logger";
 
 const ItemCard = ({ item, onSelectedCard }) => {
-  console.log("ItemCard");
+  log("ItemCard");
   return (
     <div>
       <div id="img-div" className="card">
