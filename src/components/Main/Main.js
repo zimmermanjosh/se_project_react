@@ -4,15 +4,21 @@ import { defaultClothingItems } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
 import log  from "../../utils/logger.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 
 function Main({ weatherTemp, onSelectedCard }) {
   console.log("Main");
+  const { currentTemperatureUnit  } = useContext(CurrentTemperatureUnitContext);
+  console.log(currentTemperatureUnit);
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999
+  
   const weatherType = useMemo(() => {
-    if (weatherTemp >= 86) {
+    
+    if (temp >= 86) {
       return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+    } else if (temp >= 66 && temp <= 85) {
       return "warm";
-    } else if (weatherTemp <= 65) {
+    } else if (temp <= 65) {
       return "cold";
     }
   }, [weatherTemp]);
@@ -28,9 +34,9 @@ function Main({ weatherTemp, onSelectedCard }) {
   return (
     // invoke weather card component with day=true and type="cloudy"
     <main className="main">
-      <WeatherCard day={true} type="cloudy" weatherTemp={weatherTemp} />
+      <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {weatherTemp} Fº/ You may want to wear:
+        Today is {temp} º/ You may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard
