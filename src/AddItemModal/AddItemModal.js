@@ -1,15 +1,31 @@
-import React from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
-import log from "../../utils/logger.js";
+import React, {useState} from "react";
+import ModalWithForm from "../components/ModalWithForm/ModalWithForm.js";
+import log from "../utils/logger.js";
+
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+  const [name, setName] = useState("");
+  const handleNameChange = (e) => {
+    console.log(e.target.value)
+    setName(e.target.value);
+  }
+  const [link, setUrl] = useState("");
+  const handleUrlChange = (e) => {
+    console.log(e.target.value)
+    setUrl(e.target.value);
+  }
+  const handleSubmit = (e) => {
+    e.PreventDefault();
+    onAddItem({name, link});
+  }
+  
   return (
     <ModalWithForm
       title="New Garment"
       buttonText="Add Garment"
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={onAddItem}
+      onSubmit={handleSubmit}
     >
       <div className="modal__overlay">
         <label className="modal__input-label">
@@ -21,6 +37,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             maxLength={23}
             name="name"
             placeholder="Name"
+            value={name}
+            onChange={handleNameChange}
           />
         </label>
         <label className="modal__input-label">
@@ -31,7 +49,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             type="url"
             name="link"
             placeholder="Image URL"
-            onChange={(input) => handleOnChange(input.target.value)}
+            //onChange={(input) => handleOnChange(input.target.value)}
+            value={link}
+            onChange={handleUrlChange}
           />
         </label>
         <p>Select the weather type</p>

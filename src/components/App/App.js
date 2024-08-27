@@ -49,6 +49,7 @@ function App() {
   };
 
   const onAddItem = (event) => {
+    event.preventDefault();
     console.log(event);
   };
 
