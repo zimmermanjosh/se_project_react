@@ -48,9 +48,10 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = (event) => {
-    event.preventDefault();
-    console.log(event);
+  const onAddItem = (values) => {
+    console.log(values);
+    
+    //console.log(event.target.value);
   };
 
   useEffect(() => {
