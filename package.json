@@ -32,7 +32,6 @@
     "prebuild": "npm run clean && npm install",
     "permitScripts": "chmod +x scripts/*",
     "nvmSelect": "npm run permitScripts && sh scripts/*"
-    
   },
   "browserslist": {
     "production": [

@@ -3,6 +3,7 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
 const Profile = ({ onSelectCard, onCreateModal, cards }) => {
+  console.log("!!Profile");
   return (
     <div className="profile">
       <div className="profile__sidebar">
