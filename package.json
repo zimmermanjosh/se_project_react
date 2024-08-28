@@ -31,7 +31,8 @@
     "clean": "rm -rf build && rm -rf node_modules",
     "prebuild": "npm run clean && npm install",
     "permitScripts": "chmod +x scripts/*",
-    "nvmSelect": "sh scripts/nvmSelect.sh"
+    "nvmSelect": "npm run permitScripts && sh scripts/*"
+    
   },
   "browserslist": {
     "production": [

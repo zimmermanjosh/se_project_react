@@ -104,6 +104,8 @@ then
 
 ## Run Commands
 
+`npm run nvmSelect` - Selects nvm version and runs
+
 `npm run build` - Build Production (Vite + React)
 
 `npm run clean` - Removes build artifacts '/node_modules' && '/build'

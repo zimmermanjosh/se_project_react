@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
