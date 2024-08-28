@@ -13,9 +13,10 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import AddItemModal from "../../AddItemModal/AddItemModal.js";
 import version from "../../version.js";
 import log from "../../utils/logger.js";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  console.log("App");
+  log("App");
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -49,7 +50,7 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    console.log(values);
+    log(values);
     
     //console.log(event.target.value);
   };
@@ -69,15 +70,22 @@ function App() {
   }, []);
 
   log(temp);
-  console.log(currentTemperatureUnit);
+  log(currentTemperatureUnit);
 
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
         <Header onCreateModal={handleCreateModal} />
-        <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
+
+          <Routes>
+            <Route path="/" element={ 
+              <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
+              } 
+            />
+            <Route path= "/profile" element={<p>PROFILE</p>} />
+          </Routes>
+        
         <Footer />
         {activeModal === "create" && (
           <AddItemModal

@@ -1,7 +1,8 @@
 import "./Footer.css";
+import log from "../../utils/logger";
 
 const Footer = () => {
-  console.log("Footer");
+ log("Footer");
 
   return (
     <footer className="footer">
