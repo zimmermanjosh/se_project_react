@@ -13,7 +13,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import AddItemModal from "../../AddItemModal/AddItemModal.js";
 import version from "../../version.js";
 import log from "../../utils/logger.js";
-import { Routes, Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 function App() {
   log("App");
@@ -23,11 +24,12 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [setImage] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [cards, setCards] = useState([]);
 
-  const handleOnChange = (imageValue) => {
+  /*const handleOnChange = (imageValue) => {
     log("imageValue", imageValue);
     setImage(imageValue);
-  };
+  };*/
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -51,7 +53,7 @@ function App() {
 
   const onAddItem = (values) => {
     log(values);
-    
+
     //console.log(event.target.value);
   };
 
@@ -75,17 +77,23 @@ function App() {
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
         <Header onCreateModal={handleCreateModal} />
-        <Switch>
-          <Routes>
-            <Route path="/" element={ 
-              <Main weatherTemp={temp} onSelectedCard={handleSelectedCard}  cards={cards}/>
-              } 
-            />
-            <Route path= "/profile" onCreateModal={handleCreateModal} cards={cards}/>
-          </Routes>
-        </Switch>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile onCreateModal={handleCreateModal} cards={cards} />
+            }
+          />
+        </Routes>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
