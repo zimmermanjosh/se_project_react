@@ -3,6 +3,10 @@ import log from "../../utils/logger";
 
 const ItemCard = ({ item, onSelectedCard }) => {
   log("ItemCard");
+  // Check if item is defined and has the required properties
+  if (!item || !item.link || !item.name) {
+    return <div className="card__error">Invalid item data</div>;
+  }
   return (
     <div>
       <div id="img-div" className="card">

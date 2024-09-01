@@ -1,8 +1,8 @@
-import Avatar from "../../images/dashboard/avatar.svg"
+import Avatar from "../../images/dashboard/avatar.svg";
 import "../SideBar/SideBar.css";
 
 const SideBar = () => {
-    console.log("!!SideBar");
+  console.log("!!SideBar");
   return (
     <div className="sidebar">
       {/* <div className="sidebar__info"> */}

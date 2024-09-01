@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
-import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
+//import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import {
@@ -15,6 +15,8 @@ import version from "../../version.js";
 import log from "../../utils/logger.js";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
+import { deleteItems, addItems, getItems } from "../../utils/api.js";
+//import ClothesSection from "../ClothesSection/ClothesSection.js";
 
 function App() {
   log("App");
@@ -26,10 +28,10 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]);
 
-  /*const handleOnChange = (imageValue) => {
+  const handleOnChange = (imageValue) => {
     log("imageValue", imageValue);
     setImage(imageValue);
-  };*/
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -51,10 +53,28 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = (values) => {
-    log(values);
+  const handleDeleteModal = (card) => {
+    deleteItems(card._id)
+      .then(() => {
+        handleCloseModal();
+        const updatedCards = cards.filter((item) => item._id !== card._id);
+        setCards(updatedCards);
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
+  };
 
-    //console.log(event.target.value);
+  const onAddItem = (values) => {
+    addItems(values)
+      .then((res) => {
+        setCards((cards) => [res, ...cards]);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
+    console.log("onAddItem", values);
   };
 
   useEffect(() => {
@@ -63,6 +83,7 @@ function App() {
         const temperature = parseWeatherData(data);
         log(temperature);
         setTemp(temperature);
+        getItems().then((data) => setCards(data));
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
@@ -84,13 +105,21 @@ function App() {
           <Route
             path="/"
             element={
-              <Main weatherTemp={temp} onSelectedCard={handleSelectedCard} />
+              <Main
+                weatherTemp={temp}
+                onSelectedCard={handleSelectedCard}
+                cards={cards}
+              />
             }
           />
           <Route
             path="/profile"
             element={
-              <Profile onCreateModal={handleCreateModal} cards={cards} />
+              <Profile
+                onSelectedCard={handleSelectedCard}
+                onCreateModal={handleCreateModal}
+                cards={cards}
+              />
             }
           />
         </Routes>
@@ -103,7 +132,11 @@ function App() {
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onCardDelete={handleDeleteModal}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

@@ -1,9 +1,8 @@
-import react from "react";
-import PropTypes from "prop-types";
 import ItemCard from "../ItemCard/ItemCard";
-import "./ClothesSection.css";
+import "../ClothesSection/ClothesSection.css";
+import { defaultClothingItems } from "../../utils/Constants";
 
-const ClothesSection = ({ cards, handleCreateModal, onSelectCard }) => {
+const ClothesSection = ({ handleCreateModal, onSelectCard }) => {
   console.log("!!ClothersSection");
   return (
     <div className="clothes__section">
@@ -18,31 +17,12 @@ const ClothesSection = ({ cards, handleCreateModal, onSelectCard }) => {
         </button>
       </div>
       <div className="clothes__items">
-        {cards.map((item) => {
-          return (
-            <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
-          );
-        })}
+        {defaultClothingItems.map((item) => (
+          <ItemCard key={item._id} card={item} onSelectCard={onSelectCard} />
+        ))}
       </div>
     </div>
   );
-};
-
-// Default props for when no cards are provided (optional)
-ClothesSection.defaultProps = {
-  cards: [],
-};
-
-// Prop types for better type checking and documentation
-ClothesSection.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      // Add other item properties here if needed
-    }),
-  ),
-  handleCreateModal: PropTypes.func.isRequired,
-  onSelectCard: PropTypes.func.isRequired,
 };
 
 export default ClothesSection;
