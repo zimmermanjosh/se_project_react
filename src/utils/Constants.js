@@ -46,27 +46,27 @@ export const weatherOptions = [
   {
     url: require("../images/day/fog.svg").default,
     day: true,
-    type: "fog"
+    type: "fog",
   },
   {
     url: require("../images/day/rain.svg").default,
     day: true,
-    type: "rain"
+    type: "rain",
   },
   {
     url: require("../images/day/snow.svg").default,
     day: true,
-    type: "snow"
+    type: "snow",
   },
   {
     url: require("../images/day/storm.svg").default,
     day: true,
-    type: "storm" 
+    type: "storm",
   },
   {
     url: require("../images/day/sunny.svg").default,
     day: true,
-    type: "sunny"
+    type: "sunny",
   },
   //night options
   {
@@ -82,7 +82,7 @@ export const weatherOptions = [
   {
     url: require("../images/night/fog.svg").default,
     day: false,
-    type: "fog"
+    type: "fog",
   },
   {
     url: require("../images/night/rain.svg").default,
@@ -101,15 +101,16 @@ export const weatherOptions = [
   },
 ];
 
-
 export const tempCompareValues = {
-  hot:  70,
+  hot: 70,
   warm: 66,
-  cold: 55
+  cold: 55,
 };
 
 export const weatherAPIData = {
   latitude: 32.779167,
   longitude: -96.80889,
-  APIkey: "9ed2af8b44ccce6e0959621de59c2764"
-} 
+  APIkey: "9ed2af8b44ccce6e0959621de59c2764",
+};
+
+export const userNameProfile = "Joshua Zimmerman";

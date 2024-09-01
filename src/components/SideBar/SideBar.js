@@ -1,5 +1,6 @@
 import Avatar from "../../images/dashboard/avatar.svg";
 import "../SideBar/SideBar.css";
+import { userNameProfile } from "../../utils/Constants.js";
 
 const SideBar = () => {
   console.log("!!SideBar");
@@ -8,7 +9,7 @@ const SideBar = () => {
       {/* <div className="sidebar__info"> */}
       <img src={Avatar} className="sidebar__image" alt="sidebar-avatar" />
       <div>
-        <p className="sidebar__name">User</p>
+        <p className="sidebar__name">{userNameProfile}</p>
       </div>
       {/* </div> */}
     </div>

@@ -6,6 +6,8 @@ import avatarImage from "../../images/dashboard/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
 import log from "../../utils/logger.js";
 import { getForecastWeather } from "../../utils/WeatherApi.js";
+import { Link } from "react-router-dom";
+import { userNameProfile } from "../../utils/Constants.js";
 
 const Header = ({ onCreateModal }) => {
   log("!! Header");
@@ -33,28 +35,30 @@ const Header = ({ onCreateModal }) => {
             log("State:", state);
 
             // pass the location data to the parent weatherAPI component
-            getForecastWeather(latitude,longitude)
-            .then((weatherData) => {
-              log("Weather Data:", weatherData);
-            })
-            .catch((error) => {
-              console.error("Error fetching weather data:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error fetching location data:", error);
-        });
-    });
-  } else {
-    console.error("Geolocation is not available in this browser.");
-  }
-}, []);
+            getForecastWeather(latitude, longitude)
+              .then((weatherData) => {
+                log("Weather Data:", weatherData);
+              })
+              .catch((error) => {
+                console.error("Error fetching weather data:", error);
+              });
+          })
+          .catch((error) => {
+            console.error("Error fetching location data:", error);
+          });
+      });
+    } else {
+      console.error("Geolocation is not available in this browser.");
+    }
+  }, []);
 
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={logoImage} alt="logo"></img>
+          <Link to="/">
+            <img src={logoImage} alt="logo"></img>
+          </Link>
         </div>
         <div>
           <DateTime />
@@ -79,7 +83,9 @@ const Header = ({ onCreateModal }) => {
             + add clothes
           </button>
         </div>
-        <div className="header__name">Joshua Zimmerman</div>
+        <Link to="/profile">
+          <div className="header__name">{userNameProfile}</div>
+        </Link>
         <div>
           <img src={avatarImage} alt="avatar"></img>
         </div>
