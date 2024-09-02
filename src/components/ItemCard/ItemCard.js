@@ -11,8 +11,10 @@ const ItemCard = ({ item, onSelectedCard }) => {
     <div>
       <div id="img-div" className="card">
         <img
-          src={item.link}
-          alt={item.name}
+          //src={item.link}
+          //alt={item.name}
+          alt={item.imag}
+          src={item.inage.url}
           className="card__image"
           onClick={() => onSelectedCard(item)}
         />

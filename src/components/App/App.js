@@ -24,14 +24,14 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
-  const [setImage] = useState("");
+  //const [setImage] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]);
 
-  const handleOnChange = (imageValue) => {
+  /* const handleOnChange = (imageValue) => {
     log("imageValue", imageValue);
     setImage(imageValue);
-  };
+  };*/
 
   const handleCreateModal = () => {
     setActiveModal("create");
