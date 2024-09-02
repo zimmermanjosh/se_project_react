@@ -116,6 +116,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ## Updates
 
+### 2024 09 02
+
+    - updates & refactor killed dead code
+    - added json server to test build locally
+    = added json db - to fullfill req
+    - final markup before submission
+
 ### 2024 08 21
 
 ### 2024 08 23
