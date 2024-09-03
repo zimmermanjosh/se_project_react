@@ -1,6 +1,6 @@
 import ItemCard from "../ItemCard/ItemCard";
 import "../ClothesSection/ClothesSection.css";
-import { defaultClothingItems } from "../../utils/Constants";
+//import { defaultClothingItems } from "../../utils/Constants";
 
 const ClothesSection = ({ cards, handleCreateModal, onSelectCard }) => {
   console.log("!!ClothersSection");

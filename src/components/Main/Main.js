@@ -37,10 +37,6 @@ function Main({ weatherTemp, onSelectedCard, cards }) {
     return item.weather.toLowerCase() === weatherType;
   });
 
-  /*defaultClothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
-  });*/
-
   log(filteredCards);
 
   return (

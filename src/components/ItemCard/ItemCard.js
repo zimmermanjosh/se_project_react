@@ -11,8 +11,6 @@ const ItemCard = ({ item, onSelectedCard }) => {
     <div>
       <div id="img-div" className="card">
         <img
-          //src={item.link}
-          //alt={item.name}
           alt={item.name}
           src={item.imageUrl}
           className="card__image"
