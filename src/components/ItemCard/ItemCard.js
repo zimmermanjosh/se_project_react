@@ -4,7 +4,7 @@ import log from "../../utils/logger";
 const ItemCard = ({ item, onSelectedCard }) => {
   log("ItemCard");
   // Check if item is defined and has the required properties
-  if (!item || !item.link || !item.name) {
+  if (!item || !item.imageUrl || !item.name) {
     return <div className="card__error">Invalid item data</div>;
   }
   return (
@@ -13,8 +13,8 @@ const ItemCard = ({ item, onSelectedCard }) => {
         <img
           //src={item.link}
           //alt={item.name}
-          alt={item.imag}
-          src={item.inage.url}
+          alt={item.name}
+          src={item.imageUrl}
           className="card__image"
           onClick={() => onSelectedCard(item)}
         />

@@ -10,10 +10,11 @@ export const checkResponse = (res) => {
 
 // GET request
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`).then((res) => checkResponse(res));
-  // .catch((error) => {
-  //   console.error("Error fetching items:", error);
-  // });
+  return fetch(`${baseUrl}/items`)
+    .then((res) => checkResponse(res))
+    .catch((error) => {
+      console.error("Error fetching items:", error);
+    });
 };
 
 // POST request

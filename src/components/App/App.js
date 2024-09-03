@@ -11,7 +11,7 @@ import {
 } from "../../utils/WeatherApi.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import AddItemModal from "../../AddItemModal/AddItemModal.js";
-import version from "../../version.js";
+//import version from "../../version.js";
 import log from "../../utils/logger.js";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
@@ -83,6 +83,26 @@ function App() {
         const temperature = parseWeatherData(data);
         log(temperature);
         setTemp(temperature);
+
+        // Fetch items after setting temperature
+        return getItems();
+      })
+      .then((data) => {
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid item data");
+        }
+        setCards(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  /*  useEffect(() => {
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        log(temperature);
+        setTemp(temperature);
         getItems().then((data) => setCards(data));
       })
       .catch((error) => {
@@ -90,7 +110,7 @@ function App() {
       });
 
     console.log(`App Version: ${version}`); // Log the version number to the console
-  }, []);
+  }, []);*/
 
   log(temp);
   log(currentTemperatureUnit);

@@ -114,6 +114,16 @@ then
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
+### install server - (json-server)
+
+`npm install -g json-server@^0`
+
+- copy 'mockdb/mockdb.json' to root as `db.json`
+
+### run server ( as local)
+
+-
+
 ## Updates
 
 ### 2024 09 02
