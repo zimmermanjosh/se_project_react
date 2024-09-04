@@ -2,7 +2,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "../ClothesSection/ClothesSection.css";
 //import { defaultClothingItems } from "../../utils/Constants";
 
-const ClothesSection = ({ cards, handleCreateModal, onSelectCard }) => {
+const ClothesSection = ({ cards, handleCreateModal, onSelectedCard }) => {
   console.log("!!ClothersSection");
   return (
     <div className="clothes__section">
@@ -18,7 +18,11 @@ const ClothesSection = ({ cards, handleCreateModal, onSelectCard }) => {
       </div>
       <div className="clothes__items">
         {cards.map((item) => (
-          <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onSelectedCard={onSelectedCard}
+          />
         ))}
       </div>
     </div>
