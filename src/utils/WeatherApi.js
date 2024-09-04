@@ -35,5 +35,5 @@ export const parseWeatherData = (data) => {
 
   log(weather.temperature);
 
-  return weather;
+  return weatherApi;
 };
