@@ -9,7 +9,7 @@ import {
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import AddItemModal from "../../AddItemModal/AddItemModal.js";
+import AddItemModal from "../AddItemModal/AddItemModal.js";
 import logger from "../../utils/logger.js";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile.js";

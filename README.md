@@ -122,7 +122,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ### run server ( as local)
 
--
+- json-server --watch db.json --id _id --port 3001
 
 ## Updates
 

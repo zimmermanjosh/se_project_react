@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ModalWithForm from "../components/ModalWithForm/ModalWithForm.js";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 //import log from "../utils/logger.js";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
