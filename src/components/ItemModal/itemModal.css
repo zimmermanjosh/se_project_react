@@ -21,3 +21,19 @@
 .preview__close-button:hover {
   cursor: pointer;
 }
+
+.delete__button {
+  background: none;
+  border-radius: 5px;
+  color: orange;
+  border: none;
+  justify-self: flex-end;
+  /* grid-template-rows: ; */
+}
+.modal__image {
+  width: 100%;
+}
+
+.modal__item-name {
+  display: grid;
+}
