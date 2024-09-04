@@ -126,6 +126,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ## Updates
 
+### 2024 09 03
+
+    - get help from kevin
+    - fix profile
+    - make delete work
+    - upload and change name of repo to meet requirements
+
 ### 2024 09 02
 
     - updates & refactor killed dead code
