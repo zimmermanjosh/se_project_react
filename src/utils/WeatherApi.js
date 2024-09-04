@@ -36,4 +36,5 @@ export const parseWeatherData = (data) => {
   logger(weather.temperature);
 
   return weatherApi;
+  return weatherApi;
 };
