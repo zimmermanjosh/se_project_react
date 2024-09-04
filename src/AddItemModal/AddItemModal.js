@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../components/ModalWithForm/ModalWithForm.js";
 //import log from "../utils/logger.js";
 
@@ -21,9 +21,28 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   };
 
   const handleSubmit = (e) => {
-    e.PreventDefault();
+    e.preventDefault();
     onAddItem({ name, imageUrl: link, weather });
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      console.log(`Key pressed: ${e.key}`); // Log the key pressed
+      if (e.key === "Escape") {
+        console.log("Escape key pressed, closing modal");
+        handleCloseModal();
+      }
+    };
+
+    console.log("Adding event listener for keydown");
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      console.log("Removing event listener for keydown");
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleCloseModal]);
 
   return (
     <ModalWithForm
@@ -55,7 +74,6 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             type="url"
             name="link"
             placeholder="Image URL"
-            //onChange={(input) => handleOnChange(input.target.value)}
             value={link}
             onChange={handleUrlChange}
           />

@@ -1,7 +1,7 @@
 import "./itemModal.css";
 import log from "../../utils/logger";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, onCardDelete }) => {
   log("ItemModal");
 
   return (
@@ -14,7 +14,16 @@ const ItemModal = ({ selectedCard, onClose }) => {
         ></button>
         <img alt={selectedCard.name} src={selectedCard.imageUrl} />
         <div className="modal__item-name"> {selectedCard.name} </div>
-        <div> weather type: {selectedCard.weather} </div>
+        <div>
+          {" "}
+          weather type: {selectedCard.weather}
+          <button
+            className="delete__button"
+            onClick={() => onCardDelete(selectedCard)}
+          >
+            Delete Item
+          </button>
+        </div>
       </div>
     </div>
   );
