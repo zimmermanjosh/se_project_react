@@ -73,8 +73,8 @@ function App() {
       .then((data) => {
         const temperature = parseWeatherData(data);
         log(temperature);
-        setTemp(temperature);
         // Fetch items after setting temperature
+        setTemp(temperature);
         getItems().then((data) => setCards(data));
         return getItems();
       })

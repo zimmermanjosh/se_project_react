@@ -12,12 +12,12 @@ const ItemCard = ({ item, onSelectedCard }) => {
     <div>
       <div id="img-div" className="card">
         <img
-          alt={item.name}
-          src={item.imageUrl}
+          alt={item?.name}
+          src={item?.imageUrl}
           className="card__image"
           onClick={() => onSelectedCard(item)}
         />
-        <div className="card__name"> {item.name}</div>
+        <div className="card__name"> {item?.name}</div>
       </div>
     </div>
   );
