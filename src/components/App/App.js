@@ -10,13 +10,13 @@ import {
 } from "../../utils/WeatherApi.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import AddItemModal from "../../AddItemModal/AddItemModal.js";
-import log from "../../utils/logger.js";
+import logger from "../../utils/logger.js";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
 import { deleteItems, addItems, getItems } from "../../utils/api.js";
 
 function App() {
-  log("App");
+  logger("App");
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -37,7 +37,7 @@ function App() {
     setSelectedCard(card);
   };
 
-  log(selectedCard);
+  logger(selectedCard);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -72,7 +72,7 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        log(temperature);
+        logger(temperature);
         // Fetch items after setting temperature
         setTemp(temperature);
         getItems().then((data) => setCards(data));
@@ -89,8 +89,8 @@ function App() {
       });
   }, []);
 
-  log(temp);
-  log(currentTemperatureUnit);
+  logger(temp);
+  logger(currentTemperatureUnit);
 
   return (
     <div>

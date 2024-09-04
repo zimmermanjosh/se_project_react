@@ -4,13 +4,13 @@ import React, { useState, useEffect } from "react";
 import logoImage from "../../images/dashboard/logo.svg";
 import avatarImage from "../../images/dashboard/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
-import log from "../../utils/logger.js";
+import log from "../../utils/loggerger.js";
 import { getForecastWeather } from "../../utils/WeatherApi.js";
 import { Link } from "react-router-dom";
 import { userNameProfile } from "../../utils/Constants.js";
 
 const Header = ({ onCreateModal }) => {
-  log("!! Header");
+  logger("!! Header");
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
@@ -19,8 +19,8 @@ const Header = ({ onCreateModal }) => {
       navigator.geolocation.getCurrentPosition((position) => {
         // Retrieve the latitude and longitude from the position object
         const { latitude, longitude } = position.coords;
-        log("Latitude:", latitude);
-        log("Longitude:", longitude);
+        logger("Latitude:", latitude);
+        logger("Longitude:", longitude);
 
         fetch(
           `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=20740fa69bd84624bf45f4a801ef40c3`,
@@ -31,13 +31,13 @@ const Header = ({ onCreateModal }) => {
             const state = data.results[0].components.state;
             setLocation(`${city}, ${state}`);
 
-            log("City:", city);
-            log("State:", state);
+            logger("City:", city);
+            logger("State:", state);
 
             // pass the location data to the parent weatherAPI component
             getForecastWeather(latitude, longitude)
               .then((weatherData) => {
-                log("Weather Data:", weatherData);
+                logger("Weather Data:", weatherData);
               })
               .catch((error) => {
                 console.error("Error fetching weather data:", error);

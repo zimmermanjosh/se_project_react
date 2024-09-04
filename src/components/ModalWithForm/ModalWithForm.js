@@ -1,5 +1,5 @@
 import "../ModalWithForm/ModalWithForm.css";
-import log from "../../utils/logger";
+import logger from "../../utils/logger";
 
 const ModalWithForm = ({
   children,
@@ -10,7 +10,7 @@ const ModalWithForm = ({
   //isOpen,
   onSubmit,
 }) => {
-  log("ModalWithForm");
+  logger("ModalWithForm");
 
   return (
     <div className={`modal modal_type_${name}`}>

@@ -1,8 +1,8 @@
 import "./Footer.css";
-import log from "../../utils/logger";
+import logger from "../../utils/logger";
 
 const Footer = () => {
- log("Footer");
+ logger("Footer");
 
   return (
     <footer className="footer">

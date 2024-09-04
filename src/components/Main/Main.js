@@ -3,14 +3,14 @@ import WeatherCard from "../Weather/WeatherCard.js";
 //import { defaultClothingItems } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
-import log from "../../utils/logger.js";
+import logger from "../../utils/logger.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { useContext } from "react";
 
 function Main({ weatherTemp, onSelectedCard, cards }) {
-  log("Main");
+  logger("Main");
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  log(currentTemperatureUnit);
+  logger(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = useMemo(() => {
@@ -31,13 +31,13 @@ function Main({ weatherTemp, onSelectedCard, cards }) {
     }
   }, [weatherTemp]);
 
-  log(weatherType);
+  logger(weatherType);
 
   const filteredCards = cards.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
 
-  log(filteredCards);
+  logger(filteredCards);
 
   return (
     // invoke weather card component with day=true and type="cloudy"
