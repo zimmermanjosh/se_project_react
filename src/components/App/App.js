@@ -2,7 +2,6 @@ import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
-//import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import {
@@ -11,12 +10,10 @@ import {
 } from "../../utils/WeatherApi.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import AddItemModal from "../../AddItemModal/AddItemModal.js";
-//import version from "../../version.js";
 import log from "../../utils/logger.js";
 import { Routes, Route } from "react-router-dom";
-import Profile from "../Profile/Profile";
+import Profile from "../Profile/Profile.js";
 import { deleteItems, addItems, getItems } from "../../utils/api.js";
-//import ClothesSection from "../ClothesSection/ClothesSection.js";
 
 function App() {
   log("App");
@@ -24,14 +21,8 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
-  //const [setImage] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]);
-
-  /* const handleOnChange = (imageValue) => {
-    log("imageValue", imageValue);
-    setImage(imageValue);
-  };*/
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -83,8 +74,8 @@ function App() {
         const temperature = parseWeatherData(data);
         log(temperature);
         setTemp(temperature);
-
         // Fetch items after setting temperature
+        getItems().then((data) => setCards(data));
         return getItems();
       })
       .then((data) => {
@@ -97,20 +88,6 @@ function App() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  /*  useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-        const temperature = parseWeatherData(data);
-        log(temperature);
-        setTemp(temperature);
-        getItems().then((data) => setCards(data));
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
-
-    console.log(`App Version: ${version}`); // Log the version number to the console
-  }, []);*/
 
   log(temp);
   log(currentTemperatureUnit);
