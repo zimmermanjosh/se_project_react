@@ -8,4 +8,4 @@ const log = (...args) => {
     }
 };
 
-export default log;
+export default logger;
