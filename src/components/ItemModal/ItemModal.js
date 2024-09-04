@@ -1,5 +1,5 @@
 import "./itemModal.css";
-import logger from "../../utils/loggerger";
+import logger from "../../utils/logger";
 
 const ItemModal = ({ selectedCard, onClose, onCardDelete }) => {
   logger("ItemModal");

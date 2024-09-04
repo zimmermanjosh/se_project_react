@@ -2,10 +2,10 @@
 
 const isLoggingEnabled = false;
 
-const log = (...args) => {
-    if (isLoggingEnabled) {
-        console.log(...args);
-    }
+const logger = (...args) => {
+  if (isLoggingEnabled) {
+    console.log(...args);
+  }
 };
 
 export default logger;

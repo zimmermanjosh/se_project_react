@@ -1,4 +1,4 @@
-import logger from "./loggerger";
+import logger from "./logger";
 //import { weatherAPIData } from "./Constants";
 
 const latitude = 32.779167;
@@ -8,7 +8,7 @@ const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitu
 
 // use lat and long from browser location
 export const getForecastWeather = () => {
-  loggerger("!! WeatherAPI");
+  logger("!! WeatherAPI");
 
   const weatherApi = fetch(apiRequest).then((res) => {
     logger(res);
@@ -35,6 +35,5 @@ export const parseWeatherData = (data) => {
 
   logger(weather.temperature);
 
-  return weatherApi;
-  return weatherApi;
+  return weather;
 };

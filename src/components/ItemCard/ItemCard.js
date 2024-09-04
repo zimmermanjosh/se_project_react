@@ -3,7 +3,7 @@ import logger from "../../utils/logger";
 
 const ItemCard = ({ item, onSelectedCard }) => {
   logger("ItemCard");
-  console.logger("Item data:", item); // Add this line to debug
+  console.log("Item data:", item); // Add this line to debug
   // Check if item is defined and has the required properties
   if (!item || !item.imageUrl || !item.name) {
     return <div className="card__error">Invalid item data</div>;

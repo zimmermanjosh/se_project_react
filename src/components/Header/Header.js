@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import logoImage from "../../images/dashboard/logo.svg";
 import avatarImage from "../../images/dashboard/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
-import log from "../../utils/loggerger.js";
+import logger from "../../utils/logger.js";
 import { getForecastWeather } from "../../utils/WeatherApi.js";
 import { Link } from "react-router-dom";
 import { userNameProfile } from "../../utils/Constants.js";
