@@ -9,16 +9,14 @@ const ItemCard = ({ item, onSelectedCard }) => {
     return <div className="card__error">Invalid item data</div>;
   }
   return (
-    <div>
-      <div id="img-div" className="card">
-        <img
-          alt={item?.name}
-          src={item?.imageUrl}
-          className="card__image"
-          onClick={() => onSelectedCard(item)}
-        />
-        <div className="card__name"> {item?.name}</div>
-      </div>
+    <div className="card">
+      <img
+        alt={item?.name}
+        src={item?.imageUrl}
+        className="card__image"
+        onClick={() => onSelectedCard(item)}
+      />
+      <div className="card__name"> {item?.name}</div>
     </div>
   );
 };
