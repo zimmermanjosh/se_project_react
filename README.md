@@ -122,9 +122,19 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ### run server ( as local)
 
-- json-server --watch db.json --id _id --port 3001
+- json-server --watch db.json --id \_id --port 3001
 
 ## Updates
+
+### 2024 09 05
+
+    - submission #2 updates as per markup
+
+### 2024 09 04
+
+    - fixed Reference for AddItemModal
+    - moved AddItemModal to src/components
+    - made submission - monica with the assist
 
 ### 2024 09 03
 

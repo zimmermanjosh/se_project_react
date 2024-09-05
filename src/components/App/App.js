@@ -75,7 +75,6 @@ function App() {
         logger(temperature);
         // Fetch items after setting temperature
         setTemp(temperature);
-        getItems().then((data) => setCards(data));
         return getItems();
       })
       .then((data) => {

@@ -25,25 +25,6 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     onAddItem({ name, imageUrl: link, weather });
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      console.log(`Key pressed: ${e.key}`); // Log the key pressed
-      if (e.key === "Escape") {
-        console.log("Escape key pressed, closing modal");
-        handleCloseModal();
-      }
-    };
-
-    console.log("Adding event listener for keydown");
-    document.addEventListener("keydown", handleKeyDown);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      console.log("Removing event listener for keydown");
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleCloseModal]);
-
   return (
     <ModalWithForm
       title="New Garment"
@@ -54,7 +35,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     >
       <div className="modal__overlay">
         <label className="modal__input-label">
-          {" "}
+          Name
           <input
             className="modal__input"
             type="text"
@@ -67,7 +48,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           />
         </label>
         <label className="modal__input-label">
-          image
+          Image
           <input
             className="modal__input"
             minLength={1}
@@ -78,7 +59,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             onChange={handleUrlChange}
           />
         </label>
-        <p>Select the weather type</p>
+        <p>Select the weather type:</p>
         <div className="weather_selector">
           <div className="modal__buttons">
             <input
@@ -89,7 +70,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               value="hot"
               onChange={handleWeatherChange}
             />
-            <label> hot </label>
+            <label htmlFor="hot"> Hot </label>
           </div>
           <div>
             <input
@@ -100,7 +81,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               onChange={handleWeatherChange}
             />
-            <label> warm </label>
+            <label htmlFor="warm"> Warm </label>
           </div>
           <div>
             <input
@@ -111,7 +92,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               value="cold"
               onChange={handleWeatherChange}
             />
-            <label> cold </label>
+            <label htmlFor="cold"> Cold </label>
           </div>
         </div>
       </div>
