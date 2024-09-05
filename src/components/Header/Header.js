@@ -7,7 +7,7 @@ import logger from "../../utils/logger.js";
 import { Link } from "react-router-dom";
 import { userNameProfile } from "../../utils/Constants.js";
 
-const Header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal, location }) => {
   logger("!! Header");
 
   return (
@@ -21,7 +21,7 @@ const Header = ({ onCreateModal }) => {
         <div>
           <DateTime />
         </div>
-        <div className="header__location">{location || "Loading..."}</div>
+        <div className="header__location">{location}</div>
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
