@@ -1,5 +1,5 @@
 import logger from "./logger";
-//import { weatherAPIData } from "./Constants";
+import { checkResponse } from "./api";
 
 const latitude = 32.779167;
 const longitude = -96.80889;
@@ -10,16 +10,26 @@ const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitu
 export const getForecastWeather = () => {
   logger("!! WeatherAPI");
 
-  const weatherApi = fetch(apiRequest).then((res) => {
+  /*const weatherApi = fetch(apiRequest).then((res) => {
     logger(res);
     if (res.ok) {
       return res.json();
     } else {
       return Promise.reject(`Error: ${res.status} ${res.statusText}`);
     }
-  });
+  });*/
 
-  return weatherApi;
+  //return weatherApi;
+  return fetch(apiRequest)
+    .then(checkResponse)
+    .then((data) => {
+      logger(data);
+      return data;
+    })
+    .catch((error) => {
+      logger(error);
+      return Promise.reject(error);
+    });
 };
 
 export const parseWeatherData = (data) => {
