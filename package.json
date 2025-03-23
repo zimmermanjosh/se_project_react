@@ -22,15 +22,15 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.35.0",
     "npx": "^10.2.2",
-    "prettier": "^3.1.1"
+    "prettier": "^3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rm -rf build && rm -rf node_modules",
-    "prebuild": "npm run clean && npm install",
+    "clean:local": "rm -rf build && rm -rf node_modules",
+    "prebuild": "npm run clean:local && npm install",
     "permitScripts": "chmod +x scripts/*",
     "nvmSelect": "npm run permitScripts && sh scripts/*"
   },
