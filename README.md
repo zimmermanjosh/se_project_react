@@ -126,6 +126,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ## Updates
 
+### 2025 03 23
+  
+  - update npm, nvm and dependencies
+
 ### 2024 09 05
 
     - submission #2 updates as per markup
