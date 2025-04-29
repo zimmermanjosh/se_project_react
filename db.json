@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "_id": 0,
-      "name": "Beanie",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
-    },
-    {
-      "_id": 1,
-      "name": "Boot",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
-    },
-    {
       "_id": 2,
       "name": "Cap",
       "weather": "hot",
@@ -107,6 +95,18 @@
       "imageUrl": "https://jungmaven.com/cdn/shop/files/TANKTOPPACIFICCOASTPANT240.jpg?v=1719967477",
       "weather": "warm",
       "_id": 17
+    },
+    {
+      "name": "gloves",
+      "imageUrl": "https://img.freepik.com/free-vector/sticker-design-with-blue-gloves-isolated_1308-65094.jpg?t=st=1743873295~exp=1743876895~hmac=0a64fb29921994fb670b08b91dd93bdadc16779d22726f76ffd82f5e3c72a0fe&w=740",
+      "weather": "cold",
+      "_id": 23
+    },
+    {
+      "name": "",
+      "imageUrl": "",
+      "weather": "",
+      "_id": 24
     }
   ]
 }
