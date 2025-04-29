@@ -97,22 +97,16 @@
       "_id": 17
     },
     {
-      "name": "jeans",
-      "imageUrl": "https://cdna.lystit.com/photos/dandyfellow/7b08d396/levis--511-Slim-Fit-Jeans.jpeg",
-      "weather": "warm",
-      "_id": 20
-    },
-    {
-      "name": "jeans",
-      "imageUrl": "https://png.pngtree.com/png-clipart/20230418/original/pngtree-cartoon-jeans-png-image_9065910.png",
-      "weather": "warm",
-      "_id": 22
-    },
-    {
       "name": "gloves",
       "imageUrl": "https://img.freepik.com/free-vector/sticker-design-with-blue-gloves-isolated_1308-65094.jpg?t=st=1743873295~exp=1743876895~hmac=0a64fb29921994fb670b08b91dd93bdadc16779d22726f76ffd82f5e3c72a0fe&w=740",
       "weather": "cold",
       "_id": 23
+    },
+    {
+      "name": "",
+      "imageUrl": "",
+      "weather": "",
+      "_id": 24
     }
   ]
 }
