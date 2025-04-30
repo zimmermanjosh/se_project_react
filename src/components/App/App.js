@@ -9,11 +9,17 @@ import {
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
+import RegisterModal from "../RegisterModal/RegisterModal.js";
+import LoginModal from "../LoginModal/LoginModal.js";
+import EditModal from "../EditModal/EditModal.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import logger from "../../utils/logger.js";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useHistory } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
-import { deleteItems, addItems, getItems } from "../../utils/api.js";
+import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
+import {register, login, checkToken} from "../../utils/auth.js"
 
 function App() {
   logger("App");
@@ -23,6 +29,12 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
+
 
   const handleCreateModal = () => {
     setActiveModal("create");
