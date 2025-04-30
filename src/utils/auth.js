@@ -1,5 +1,4 @@
-// stripped down to only the necessary parts
-// src/utils/auth.js
+
 const BASE_URL = "http://localhost:3001";
 
 export const register = (name, avatar, email, password) => {
