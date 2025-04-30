@@ -16,7 +16,7 @@ import LoginModal from "../LoginModal/LoginModal.js";
 import EditModal from "../EditModal/EditModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import logger from "../../utils/logger.js";
-import { Routes, Route, useHistory } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
 import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
 import {register, login, checkToken} from "../../utils/auth.js"
@@ -33,7 +33,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
 
 
   const handleCreateModal = () => {
