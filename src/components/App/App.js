@@ -297,6 +297,15 @@ function App() {
             isLoading={isLoading}
           />
         )}
+        {activeModal === "register" && (
+          <RegisterModal
+            isOpen={activeModal === "register"}
+            onClose={handleCloseModal}
+            onRegister={handleRegister}
+            onLoginClick={() => setActiveModal("login")}
+            isLoading={isLoading}
+          />
+        )}
         {activeModal === "edit-profile" && (
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}

@@ -1,0 +1,11 @@
+{
+  "users":
+  [
+    {
+      "name": "test user",
+      "avatar URL": "https://i.pravatar.cc/300",
+      "email": "test@example.com",
+      "password": "pasword123"
+    }
+  ]
+}

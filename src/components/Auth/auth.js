@@ -1,5 +1,5 @@
-// Base URL for the API
-const BASE_URL = 'https://api.yourservername.com'; // Replace with your actual API URL
+// src/components/Auth/auth.js
+const BASE_URL = "http://localhost:3001"; // Local JSON server URL
 
 // Registration endpoint
 export const register = ({ name, avatar, email, password }) => {
