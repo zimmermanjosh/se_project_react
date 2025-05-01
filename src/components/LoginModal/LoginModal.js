@@ -45,7 +45,7 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegisterClick, isLoading }) =>
         />
       </label>
       <p className="modal__switch">
-        Don't have an account?{" "}
+        {"Don't have an account?"}
         <span className="modal__switch-link" onClick={onRegisterClick}>
           Sign up
         </span>

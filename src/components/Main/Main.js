@@ -1,13 +1,12 @@
 import ItemCard from "../ItemCard/ItemCard.js";
 import WeatherCard from "../Weather/WeatherCard.js";
-//import { defaultClothingItems } from "../../utils/Constants.js";
 import { useMemo } from "react";
 import "./Main.css";
 import logger from "../../utils/logger.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { useContext } from "react";
 
-function Main({ weatherTemp, onSelectedCard, cards }) {
+function Main({ weatherTemp, onSelectedCard, cards, onCardLike, isLoggedIn }) {
   logger("Main");
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   logger(currentTemperatureUnit);
@@ -29,7 +28,7 @@ function Main({ weatherTemp, onSelectedCard, cards }) {
         return "cold";
       }
     }
-  }, [weatherTemp]);
+  }, [temp]);
 
   logger(weatherType);
 
@@ -40,17 +39,17 @@ function Main({ weatherTemp, onSelectedCard, cards }) {
   logger(filteredCards);
 
   return (
-    // invoke weather card component with day=true and type="cloudy"
     <main className="main">
       <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {temp} {currentTemperatureUnit}/ You may want to wear:
+        Today is {temp}° {currentTemperatureUnit}/ You may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard
               key={item._id}
               item={item}
               onSelectedCard={onSelectedCard}
+              onCardLike={onCardLike}
             />
           ))}
         </div>

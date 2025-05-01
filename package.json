@@ -34,7 +34,9 @@
     "clean:local": "rm -rf build && rm -rf node_modules",
     "prebuild": "npm run clean:local && npm install",
     "permitScripts": "chmod +x scripts/*",
-    "nvmSelect": "npm run permitScripts && sh scripts/*"
+    "nvmSelect": "npm run permitScripts && sh scripts/*",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "browserslist": {
     "production": [
