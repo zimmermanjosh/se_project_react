@@ -27,7 +27,7 @@ echo '{"users": []}' > users.json
 Add the following to your scripts section in package.json:
 
 ```json
-"server": "node server.js"
+"server": "node server.cjs"
 ```
 
 ## Step 4: Start the Server
@@ -130,3 +130,60 @@ npm start
 ```
 
 Your React app should now be able to communicate with the authentication-enabled JSON Server.
+
+
+## Response when successful
+```` return data
+Auth test state reset
+Test user added: test@example.com
+Mock register called: { name: 'New User', email: 'new@example.com' }
+Registration successful: {
+_id: '1746145990224',
+name: 'New User',
+avatar: 'https://i.pravatar.cc/300',
+email: 'new@example.com'
+}
+Mock login called: new@example.com
+Login successful: { token: 'mock_token_1746145990225' }
+Mock checkToken called with token: mock_token_1746145990225
+Token validation successful: {
+_id: '1746145990224',
+name: 'New User',
+avatar: 'https://i.pravatar.cc/300',
+email: 'new@example.com'
+}
+Is logged in? true
+Current user: {
+_id: '1746145990224',
+name: 'New User',
+avatar: 'https://i.pravatar.cc/300',
+email: 'new@example.com'
+}
+➜  se_project_react git:(sprint14/auth-reg) ✗ node src/utils/server-auth-test.cjs
+Starting authentication tests...
+🔍 STARTING SERVER AUTHENTICATION TESTS
+🔍 Server: localhost:3001
+🔍 Test user: dallas_tester@example.com
+===== TESTING USER REGISTRATION =====
+✅ Registration successful!
+User data: {
+_id: '1746146006694',
+name: 'Dallas Tester',
+email: 'dallas_tester@example.com',
+avatar: 'https://i.pravatar.cc/300'
+}
+===== TESTING USER LOGIN =====
+✅ Login successful!
+Token received
+===== TESTING USER PROFILE RETRIEVAL =====
+✅ Profile retrieval successful!
+User data: {
+_id: '1746146006694',
+name: 'Dallas Tester',
+email: 'dallas_tester@example.com',
+avatar: 'https://i.pravatar.cc/300'
+}
+===== TESTING COMPLETE =====
+You can use this token for future API requests:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbGxhc190ZXN0ZXJAZXhhbXBsZS5jb20iLCJuYW1lIjoiRGFsbGFzIFRlc3RlciIsIl9pZCI6IjE3NDYxNDYwMDY2OTQiLCJpYXQiOjE3NDYxNDYwMDYsImV4cCI6MTc0NjE0OTYwNn0.iN1nQsti8skOKLynv6D11BWhBdWkc5b_aNfeApMx2Xw
+```
