@@ -1,8 +1,7 @@
 import ItemCard from "../ItemCard/ItemCard";
 import "../ClothesSection/ClothesSection.css";
-//import { defaultClothingItems } from "../../utils/Constants";
 
-const ClothesSection = ({ cards, handleCreateModal, onSelectedCard }) => {
+const ClothesSection = ({ cards, handleCreateModal, onSelectedCard, onCardLike }) => {
   console.log("!!ClothersSection");
   return (
     <div className="clothes__section">
@@ -22,6 +21,7 @@ const ClothesSection = ({ cards, handleCreateModal, onSelectedCard }) => {
             key={item._id}
             item={item}
             onSelectedCard={onSelectedCard}
+            onCardLike={onCardLike}
           />
         ))}
       </div>

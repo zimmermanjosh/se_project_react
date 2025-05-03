@@ -1,4 +1,4 @@
-  .header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,6 +19,7 @@
   gap: 20px;
   align-items: center;
 }
+
 .header__dateTime {
   display: flex;
   gap: 20px;
@@ -28,18 +29,46 @@
 .header__name {
   display: flex;
   color: black;
+  margin-right: 10px;
 }
 
-.header__clothes-button {
+.header__button {
   border: none;
   background-color: white;
   font-family: "CabinetGrotesk", sans-serif;
   font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-.header__toggle_switch-button {
-  border: none;
-  background-color: white;
-  font-family: "CabinetGrotesk", sans-serif;
+.header__button:hover {
+  opacity: 0.6;
+}
+
+.header__profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
   font-weight: 700;
 }

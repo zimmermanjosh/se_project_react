@@ -1,4 +1,4 @@
-.sidebar__image {
+/*.sidebar__image {
   align-items: center;
   gap: 16px;
   display: flex;
@@ -13,4 +13,90 @@
   font-weight: 700;
   color: black;
   text-align: center;
+}*/
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.sidebar__name {
+  font-family: "Cabinet Grotesk";
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.sidebar__edit-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar__edit-button:hover {
+  opacity: 0.6;
+}
+
+.sidebar__logout-button {
+  background: none;
+  border: none;
+  color: #FF4D00;
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 20px;
+  align-self: center;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar__logout-button:hover {
+  opacity: 0.6;
 }

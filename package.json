@@ -1,11 +1,13 @@
 {
   "name": "se_project_react",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "node-fetch": "^3.3.2",
+    "npm-check-updates": "^18.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,10 +20,12 @@
     "@babel/eslint-parser": "^7.25.1",
     "@babel/preset-react": "^7.24.7",
     "babel-eslint": "^10.1.0",
+    "body-parser": "^1.20.3",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.35.0",
     "json-server": "^0.17.4",
+    "jsonwebtoken": "^9.0.2",
     "npx": "^10.2.2",
     "prettier": "^3.5.3"
   },
@@ -33,7 +37,10 @@
     "clean:local": "rm -rf build && rm -rf node_modules",
     "prebuild": "npm run clean:local && npm install",
     "permitScripts": "chmod +x scripts/*",
-    "nvmSelect": "npm run permitScripts && sh scripts/*"
+    "nvmSelect": "npm run permitScripts && sh scripts/*",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "server": "node server/server.js"
   },
   "browserslist": {
     "production": [

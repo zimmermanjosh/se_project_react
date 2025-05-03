@@ -18,3 +18,34 @@
 .card {
   position: relative;
 }
+
+.card__like-button {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.card__like-button_active {
+  color: #FF0000;
+  opacity: 1;
+}
+
+.card__error {
+  color: red;
+  font-family: "CabinetGrotesk", Arial, sans-serif;
+  font-weight: 500;
+}

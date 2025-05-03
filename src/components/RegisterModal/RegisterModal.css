@@ -1,0 +1,33 @@
+.modal__input-label {
+  display: flex;
+  flex-direction: column;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  padding: 0 0 9px;
+  font-size: 16px;
+  font-family: "CabinetGrotesk", sans-serif;
+}
+
+.modal__switch {
+  font-size: 16px;
+  margin-top: 16px;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 500;
+}
+
+.modal__switch-link {
+  color: #2f71e5;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.modal__switch-link:hover {
+  opacity: 0.6;
+}

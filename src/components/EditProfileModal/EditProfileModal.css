@@ -10,24 +10,12 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-top: 8px;
-  padding: 0 0 9px;
+  padding: 8px 0;
   font-size: 16px;
   font-family: "CabinetGrotesk", sans-serif;
 }
 
-.modal__switch {
-  font-size: 16px;
-  margin-top: 16px;
-  font-family: "CabinetGrotesk", sans-serif;
-  font-weight: 500;
-}
-
-.modal__switch-link {
-  color: #2f71e5;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.modal__switch-link:hover {
-  opacity: 0.6;
+.modal__input:focus {
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }
