@@ -38,8 +38,7 @@
     "prebuild:nvm": "npm run clean:local && npm install",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh",
-    "server": "chmod +x scripts/testServer.sh && scripts/testServer.sh"
+    "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh"
   },
   "browserslist": {
     "production": [
