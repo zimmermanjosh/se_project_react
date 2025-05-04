@@ -18,7 +18,7 @@ import logger from "../../utils/logger.js";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
 import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
-import {register, login, checkToken} from "../../utils/auth.js"
+import {register, login, checkToken} from "../../utils/api.js"
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
@@ -104,7 +104,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         handleCloseModal();
-        history.push("/");
+        history("/");
       })
       .catch((err) => {
         console.log(err);
@@ -127,7 +127,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         handleCloseModal();
-        history.push("/");
+        history("/");
       })
       .catch((err) => {
         console.log(err);
@@ -141,7 +141,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     setIsLoggedIn(false);
-    history.push("/");
+    history("/");
   };
 
   // User profile handlers
