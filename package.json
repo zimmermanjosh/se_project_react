@@ -40,7 +40,7 @@
     "nvmSelect": "npm run permitScripts && sh scripts/*",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "server": "node server/server.js"
+    "server": "node server/server.cjs"
   },
   "browserslist": {
     "production": [

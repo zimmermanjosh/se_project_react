@@ -53,7 +53,7 @@ export const deleteItems = (id, token) => {
 // AUTHENTICATION FUNCTIONS
 
 // Register a new user
-export const register = (name, avatar, email, password) => {
+export const register = ({name, avatar, email, password}) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
