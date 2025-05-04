@@ -104,7 +104,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         handleCloseModal();
-        history.push("/");
+        history("/");
       })
       .catch((err) => {
         console.log(err);
@@ -127,7 +127,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         handleCloseModal();
-        history.push("/");
+        history("/");
       })
       .catch((err) => {
         console.log(err);
@@ -141,7 +141,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     setIsLoggedIn(false);
-    history.push("/");
+    history("/");
   };
 
   // User profile handlers

@@ -69,7 +69,7 @@ export const register = ({name, avatar, email, password}) => {
 };
 
 // Login a user
-export const login = (email, password) => {
+export const login = ({email, password}) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
