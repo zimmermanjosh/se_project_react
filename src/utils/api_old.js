@@ -4,7 +4,7 @@ export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   } else {
-    return Promise.reject(`Error: ${res.status} ${res.statusText}`);
+    return Promise.reject(`Error: ${res.status} ${res.statusText}}`);
   }
 };
 
@@ -12,16 +12,13 @@ export const checkResponse = (res) => {
 export const getItems = () => {
   return fetch(`${baseUrl}/items`)
     .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: items }
     .catch((error) => {
       console.error("Error fetching items:", error);
-      throw error;
     });
 };
 
 // POST request with auth
-export const addItems = (data) => {
-  const token = localStorage.getItem("jwt");
+export const addItems = (data, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -31,7 +28,6 @@ export const addItems = (data) => {
     body: JSON.stringify(data),
   })
     .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
     .catch((error) => {
       console.error("Error adding items:", error);
       throw error;
@@ -39,8 +35,7 @@ export const addItems = (data) => {
 };
 
 // DELETE request with auth
-export const deleteItems = (id) => {
-  const token = localStorage.getItem("jwt");
+export const deleteItems = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -105,9 +100,23 @@ export const checkToken = (token) => {
     });
 };
 
+// Get current user
+export const getCurrentUser = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+  })
+    .then((res) => checkResponse(res))
+    .catch((error) => {
+      console.error("Error getting user data:", error);
+      throw error;
+    });
+};
+
 // Update user profile
-export const updateUserProfile = (name, avatar) => {
-  const token = localStorage.getItem("jwt");
+export const updateUserProfile = (name, avatar, token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -124,8 +133,7 @@ export const updateUserProfile = (name, avatar) => {
 };
 
 // Like an item
-export const addCardLike = (id) => {
-  const token = localStorage.getItem("jwt");
+export const addCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
@@ -134,7 +142,6 @@ export const addCardLike = (id) => {
     },
   })
     .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
     .catch((error) => {
       console.error("Error liking item:", error);
       throw error;
@@ -142,8 +149,7 @@ export const addCardLike = (id) => {
 };
 
 // Remove like from item
-export const removeCardLike = (id) => {
-  const token = localStorage.getItem("jwt");
+export const removeCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
@@ -152,7 +158,6 @@ export const removeCardLike = (id) => {
     },
   })
     .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
     .catch((error) => {
       console.error("Error removing like:", error);
       throw error;
