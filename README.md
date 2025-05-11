@@ -126,6 +126,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ## Updates
 
+### 2025 05 10 
+
+    - GITHUB Resources
+
+    - Front End: https://github.com/zimmermanjosh/se_project_react
+    - Back End:  https://github.com/zimmermanjosh/se_project_express
+
 ### 2025 03 23
   
   - update npm, nvm and dependencies
