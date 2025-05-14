@@ -126,73 +126,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
 ## Updates
 
+### 2025 05 13 
+  - add to github pages 
+
 ### 2025 05 10 
 
     - GITHUB Resources
 
     - Front End: https://github.com/zimmermanjosh/se_project_react
     - Back End:  https://github.com/zimmermanjosh/se_project_express
-
-### 2025 03 23
-  
-  - update npm, nvm and dependencies
-
-### 2024 09 05
-
-    - submission #2 updates as per markup
-
-### 2024 09 04
-
-    - fixed Reference for AddItemModal
-    - moved AddItemModal to src/components
-    - made submission - monica with the assist
-
-### 2024 09 03
-
-    - get help from kevin
-    - fix profile
-    - make delete work
-    - upload and change name of repo to meet requirements
-
-### 2024 09 02
-
-    - updates & refactor killed dead code
-    - added json server to test build locally
-    = added json db - to fullfill req
-    - final markup before submission
-
-### 2024 08 21
-
-### 2024 08 23
-
-    - AddItemModal
-
-### 2024 08 10
-
-    - npm update
-    - eslissue
-    - nvm update
-    - dependencies/packages updates
-    - "nvm install v20.16.0"
-    - README.MD Updates
-    - update toggle switch
-
-### 2024 08 18
-
-    - updated code to use global logger
-    - cleaned up old comments
-    - reverted code to get headers working and not adding errant code
-    - started over -- From begining
-
-### 2024 08 18
-
-    - implement temp switch
-    - implment context
-
-### Github
-
-    - https://github.com/zimmermanjosh/se_project_react_WTWR_part2
-
-### LocalDir
-
-    - /Users/jozimmerman/Dev/se_project_react_WTWR_part2
