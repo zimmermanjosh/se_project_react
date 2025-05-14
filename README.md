@@ -133,5 +133,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser
 
     - GITHUB Resources
 
-    - Front End: https://github.com/zimmermanjosh/se_project_react
-    - Back End:  https://github.com/zimmermanjosh/se_project_express
+Front End: [https://github.com/zimmermanjosh/se_project_react]
+
+Back End:  [https://github.com/zimmermanjosh/se_project_express]
