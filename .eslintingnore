@@ -1,0 +1,14 @@
+# Ignore build files
+build/
+dist/
+
+# Ignore specific file
+/Users/mrfancypants/Development/se_project_react/build/static/js/453.2b71ad4e.chunk.js
+/Users/mrfancypants/Development/se_project_react/build/static/js/main.413b6db7.js
+
+# Ignore all chunk files if desired
+build/static/js/*.chunk.js
+
+# Other common ignores
+node_modules/
+coverage/
