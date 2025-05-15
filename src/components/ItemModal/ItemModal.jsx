@@ -1,7 +1,7 @@
 import "./itemModal.css";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.jsx";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 const ItemModal = ({ selectedCard, onClose, onCardDelete }) => {
   logger("ItemModal");

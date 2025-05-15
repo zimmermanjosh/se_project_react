@@ -1,11 +1,11 @@
 import "./Header.css";
-import DateTime from "../DateTime/DateTime.js";
+import DateTime from "../DateTime/DateTime.jsx";
 import logoImage from "../../images/dashboard/logo.svg";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
-import logger from "../../utils/logger.js";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import logger from "../../utils/logger.jsx";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 const Header = ({
                   onCreateModal,

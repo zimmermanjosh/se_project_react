@@ -1,5 +1,5 @@
 import "./Footer.css";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.jsx";
 
 let date = new Date().getFullYear()
 

@@ -1,4 +1,4 @@
-import { BASE_URL } from "./config";
+import { BASE_URL } from "./config.jsx";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -15,6 +15,16 @@ function request(url, options) {
 
 // GET request - public
 export const getItems = () => {
+  const token = localStorage.getItem("jwt");
+
+  const headers = {
+    "Content-Type": "application/json"
+  };
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
   return request(`${BASE_URL}/items`)
     .then((data) => data.data);
 };

@@ -1,5 +1,5 @@
 import "../ModalWithForm/ModalWithForm.css";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.jsx";
 
 const ModalWithForm = ({
   children,

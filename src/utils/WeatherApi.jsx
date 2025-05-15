@@ -1,5 +1,5 @@
-import logger from "./logger";
-import { checkResponse } from "./api";
+import logger from "./logger.jsx";
+import { checkResponse } from "./api.jsx";
 
 const latitude = 32.779167;
 const longitude = -96.80889;
@@ -9,7 +9,17 @@ const apiRequest = `https://api.openweathermap.org/data/2.5/weather?lat=${latitu
 export const getForecastWeather = () => {
   logger("!! WeatherAPI");
 
-  return fetch(apiRequest)
+  const token = localStorage.getItem("jwt");
+
+  const headers = {
+    "Content-Type": "application/json"
+  };
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  return fetch(apiRequest, {headers: headers})
     .then((res) => {
       return checkResponse(res);
     })

@@ -1,5 +1,5 @@
-import { checkResponse } from "./api";
-import {BASE_URL} from "./config";
+import { checkResponse } from "./api.jsx";
+import {BASE_URL} from "./config.jsx";
 
 function request(url, options) {
   return fetch(url, options).then(checkResponse);

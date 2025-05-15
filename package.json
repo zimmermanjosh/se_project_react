@@ -1,6 +1,6 @@
 {
   "name": "se_project_react",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "private": true,
   "homepage": "https://zimmermanjoshua.github.io/se_project_react",
   "dependencies": {
@@ -38,8 +38,10 @@
     "eject": "react-scripts eject",
     "clean:local": "rm -rf build && rm -rf node_modules",
     "prebuild:nvm": "npm run clean:local && npm install",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . && jsxLint",
+    "lint:fix": "eslint . --fix && jsxLintFix",
+    "jsxLint" : "eslint \\\"**/*.{js,jsx}\\\"",
+    "jsxLintFix" :" eslint \\\"**/*.{js,jsx}\\\" --fix\"",
     "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

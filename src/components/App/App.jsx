@@ -1,25 +1,27 @@
 import "./App.css";
-import Header from "../Header/Header.js";
-import Footer from "../Footer/Footer.js";
-import Main from "../Main/Main.js";
+import Header from "../Header/Header.jsx";
+import Footer from "../Footer/Footer.jsx";
+import Main from "../Main/Main.jsx";
 import { useState, useEffect } from "react";
-import ItemModal from "../ItemModal/ItemModal.js";
+import ItemModal from "../ItemModal/ItemModal.jsx";
 import {
   getForecastWeather,
   parseWeatherData,
-} from "../../utils/WeatherApi.js";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import AddItemModal from "../AddItemModal/AddItemModal.js";
-import RegisterModal from "../RegisterModal/RegisterModal.js";
-import LoginModal from "../LoginModal/LoginModal.js";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
-import logger from "../../utils/logger.js";
+} from "../../utils/WeatherApi.jsx";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import logger from "../../utils/logger.jsx";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Profile from "../Profile/Profile.js";
-import { deleteItems, addItems, getItems, addCardLike, removeCardLike } from "../../utils/api.js";
-import { register, login, checkToken, updateUserProfile } from "../../utils/auth.js";
-import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
+import Profile from "../Profile/Profile.jsx";
+import { deleteItems, addItems, getItems, addCardLike, removeCardLike } from "../../utils/api.jsx";
+import { register, login, checkToken, updateUserProfile } from "../../utils/auth.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+
+import { runLoginTests } from '../../utils/test/TestLogin.jsx';
 
 function App() {
   logger("App");
@@ -230,7 +232,7 @@ function App() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   logger(temp);
   logger(currentTemperatureUnit);
@@ -240,6 +242,7 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
+
         <Header
           onCreateModal={handleCreateModal}
           onRegisterModal={handleRegisterModal}
@@ -277,7 +280,14 @@ function App() {
             }
           />
         </Routes>
-        <Footer />
+        <button
+          onClick={runLoginTests}
+          style={{ position: 'fixed', bottom: '10px', right: '10px', zIndex: 9999 }}
+        >
+          Test Login
+        </button>
+        <Footer
+        />
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}

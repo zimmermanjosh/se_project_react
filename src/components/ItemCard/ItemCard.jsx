@@ -1,7 +1,7 @@
 import "./ItemCard.css";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.jsx";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   logger("ItemCard");
