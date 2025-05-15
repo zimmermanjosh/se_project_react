@@ -17,8 +17,8 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import logger from "../../utils/logger.js";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
-import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
-import {register, login, checkToken} from "../../utils/auth.js"
+import { deleteItems, addItems, getItems, addCardLike, removeCardLike } from "../../utils/api.js";
+import { register, login, checkToken, updateUserProfile } from "../../utils/auth.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
@@ -147,9 +147,8 @@ function App() {
 
   // User profile handlers
   const handleUpdateUser = ({ name, avatar }) => {
-    const token = localStorage.getItem("jwt");
     setIsLoading(true);
-    updateUserProfile(name, avatar, token)
+    updateUserProfile(name, avatar)  // No need to pass token here anymore
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
         handleCloseModal();

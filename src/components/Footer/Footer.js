@@ -1,13 +1,16 @@
 import "./Footer.css";
 import logger from "../../utils/logger";
 
+let date = new Date().getFullYear()
+
+
 const Footer = () => {
  logger("Footer");
 
   return (
     <footer className="footer">
       <div>Developed by Joshua Zimmerman</div>
-      <div>© new Date().getFullYear()</div>
+      <div>© {date}</div>
     </footer>
   );
 };

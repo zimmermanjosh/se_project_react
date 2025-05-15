@@ -32,9 +32,9 @@ function Main({ weatherTemp, onSelectedCard, cards, onCardLike, isLoggedIn }) {
 
   return (
     <main className="main">
-      <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
+      <WeatherCard day={true} type="cloudy" weatherTemp={tempF} />
       <section className="card__section" id="card-section">
-        Today is {temp}° {currentTemperatureUnit}/ You may want to wear:
+        Today is {tempF}° {currentTemperatureUnit}/ You may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard
