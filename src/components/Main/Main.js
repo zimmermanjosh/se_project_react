@@ -10,25 +10,17 @@ function Main({ weatherTemp, onSelectedCard, cards, onCardLike, isLoggedIn }) {
   logger("Main");
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   logger(currentTemperatureUnit);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const tempF = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = useMemo(() => {
-    if (temp >= 86) {
+    if (tempF >= 86) {
       return "hot";
-    } else if (temp >= 66 && temp <= 85) {
+    } else if (tempF >= 66 && tempF <= 85) {
       return "warm";
-    } else if (temp <= 65) {
+    } else if (tempF <= 65) {
       return "cold";
-    } else {
-      if (temp >= 30) {
-        return "hot";
-      } else if (temp >= 19 && temp <= 29) {
-        return "warm";
-      } else if (temp <= 18) {
-        return "cold";
-      }
     }
-  }, [temp]);
+  }, [weatherTemp]);
 
   logger(weatherType);
 

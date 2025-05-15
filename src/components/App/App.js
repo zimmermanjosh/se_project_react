@@ -18,7 +18,7 @@ import logger from "../../utils/logger.js";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile.js";
 import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
-import {register, login, checkToken} from "../../utils/api.js"
+import {register, login, checkToken} from "../../utils/auth.js"
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
+  const [location, setLocation] = useState('');
 
   //check for token when web mounts
   // Check for token on mount
@@ -241,6 +242,7 @@ function App() {
           onRegisterModal={handleRegisterModal}
           onLoginModal={handleLoginModal}
           isLoggedIn={isLoggedIn}
+          location={location}
         />
         <Routes>
           <Route

@@ -1,15 +1,5 @@
 const baseUrl = "http://localhost:3001";
 
-const request = (url, options) => {
-  return fetch(url, options).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status} ${res.statusText}`);
-    }
-  });
-};
-
 export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
@@ -18,13 +8,17 @@ export const checkResponse = (res) => {
   }
 };
 
+
+function request(url, options) {
+  return request(url, options).then(checkResponse);
+}
+
 // GET request - public
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`)
-    .then((res) => checkResponse(res))
+  return request(`${baseUrl}/items`)
     .then((data) => data.data) // Important: The backend returns { data: items }
     .catch((error) => {
-      console.error("Error fetching items:", error);
+      console.error("Error requesting items:", error);
       throw error;
     });
 };
@@ -32,7 +26,7 @@ export const getItems = () => {
 // POST request with auth
 export const addItems = (data) => {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +45,7 @@ export const addItems = (data) => {
 // DELETE request with auth
 export const deleteItems = (id) => {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -69,7 +63,7 @@ export const deleteItems = (id) => {
 
 // Register a new user
 export const register = ({name, avatar, email, password}) => {
-  return fetch(`${baseUrl}/signup`, {
+  return request(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +80,7 @@ export const register = ({name, avatar, email, password}) => {
 // Like an item
 export const addCardLike = (id) => {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${id}/likes`, {
+  return request(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -104,7 +98,7 @@ export const addCardLike = (id) => {
 // Remove like from item
 export const removeCardLike = (id) => {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${id}/likes`, {
+  return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
