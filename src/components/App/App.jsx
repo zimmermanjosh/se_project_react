@@ -213,9 +213,9 @@ function App() {
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
-        console.log("Weather API data:", data);
+       // console.log("Weather API data:", data);
         const temperature = parseWeatherData(data);
-        console.log("Parsed temperature:", temperature);
+       // console.log("Parsed temperature:", temperature);
         logger(temperature);
         if (data.name) {
           setLocation(data.name);

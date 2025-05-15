@@ -7,7 +7,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { useContext } from "react";
 
 function Main({ weatherTemp, onSelectedCard, cards, onCardLike, isLoggedIn }) {
-  console.log("weatherTemp in Main:", weatherTemp);
+  // console.log("weatherTemp in Main:", weatherTemp);
   logger("Main");
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   logger(currentTemperatureUnit);

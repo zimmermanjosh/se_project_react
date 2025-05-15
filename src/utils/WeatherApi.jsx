@@ -19,7 +19,7 @@ export const getForecastWeather = () => {
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  return fetch(apiRequest, {headers: headers})
+  return fetch(apiRequest, headers)
     .then((res) => {
       return checkResponse(res);
     })
