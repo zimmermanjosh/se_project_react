@@ -211,9 +211,13 @@ function App() {
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
+        console.log("Weather API data:", data);
         const temperature = parseWeatherData(data);
+        console.log("Parsed temperature:", temperature);
         logger(temperature);
-        // Fetch items after setting temperature
+        if (data.name) {
+          setLocation(data.name);
+        }
         setTemp(temperature);
         return getItems();
       })

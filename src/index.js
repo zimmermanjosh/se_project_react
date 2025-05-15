@@ -5,9 +5,10 @@ import reportWebVitals from "./reportWebVitals";
 import "../src/index.css";
 import { BrowserRouter } from "react-router-dom";
 
+const basename = process.env.PUBLIC_URL || '';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <React.StrictMode basename={basename} >
     <BrowserRouter>
     <App />
     </BrowserRouter>

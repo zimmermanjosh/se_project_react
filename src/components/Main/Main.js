@@ -6,7 +6,8 @@ import logger from "../../utils/logger.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { useContext } from "react";
 
-function Main({ weatherTemp, onSelectedCard, cards, onCardLike, isLoggedIn }) {
+function Main({ weatherTemp, onSelectedCard, cards, onCardLike }) {
+  console.log("weatherTemp in Main:", weatherTemp);
   logger("Main");
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   logger(currentTemperatureUnit);

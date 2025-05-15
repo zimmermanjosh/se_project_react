@@ -22,7 +22,7 @@ export const getItems = () => {
 // POST request with auth
 export const addItems = (data) => {
   const token = localStorage.getItem("jwt");
-  return request(`${baseUrl}/items`, {
+  return request(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

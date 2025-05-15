@@ -21,13 +21,13 @@ export const register = ({ name, avatar, email, password }) => {
   });
 };
 
-export const login = (email, password) => {
+export const login = ({email, password}) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify(({email, password})),
   })
   .then((res) => {
     if (res.ok) {
@@ -52,18 +52,6 @@ export const checkToken = (token) => {
     return Promise.reject(`Error: ${res.status}`);
   });
 };
-
-// helper fetch req
-
-const request = (url, options) => {
-  return fetch(url, options).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status} ${res.statusText}`);
-    }
-  });
-}
 
 // Update user profile
 export const updateUserProfile = (name, avatar) => {
