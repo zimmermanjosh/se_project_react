@@ -24,8 +24,7 @@ export const getItems = () => {
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
-
-  return request(`${BASE_URL}/items`)
+  return request(`${BASE_URL}/items`, { headers })
     .then((data) => data.data);
 };
 
@@ -40,8 +39,7 @@ export const addItems = (data) => {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
+    .then((data) => data.data)
     .catch((error) => {
       console.error("Error adding items:", error);
       throw error;
@@ -76,7 +74,7 @@ export const register = ({name, avatar, email, password}) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   })
-    .then((res) => checkResponse(res))
+    .then((data) => data.data)
     .catch((error) => {
       console.error("Error registering user:", error);
       throw error;
@@ -93,8 +91,7 @@ export const addCardLike = (id) => {
       "Authorization": `Bearer ${token}`,
     },
   })
-    .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
+    .then((data) => data.data)
     .catch((error) => {
       console.error("Error liking item:", error);
       throw error;
@@ -111,8 +108,7 @@ export const removeCardLike = (id) => {
       "Authorization": `Bearer ${token}`,
     },
   })
-    .then((res) => checkResponse(res))
-    .then((data) => data.data) // Important: The backend returns { data: item }
+    .then((data) => data.data)
     .catch((error) => {
       console.error("Error removing like:", error);
       throw error;

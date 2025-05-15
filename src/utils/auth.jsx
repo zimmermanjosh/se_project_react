@@ -57,7 +57,7 @@ export const checkToken = (token) => {
 export const updateUserProfile = (name, avatar) => {
   const token = localStorage.getItem("jwt");
 
-  return request(`$url/users/me`, {
+  return request(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

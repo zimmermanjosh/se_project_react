@@ -8,8 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 const basename = process.env.PUBLIC_URL || '';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode basename={basename} >
-    <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter basename={basename}>
     <App />
     </BrowserRouter>
   </React.StrictMode>,
