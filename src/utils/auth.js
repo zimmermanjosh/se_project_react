@@ -1,9 +1,12 @@
 import { checkResponse } from "./api";
+import {BASE_URL} from "./config";
 
-const BASE_URL = "http://localhost:3001";
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
+}
 
-export const register = (name, avatar, email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+export const register = ({ name, avatar, email, password }) => {
+  return request(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { BASE_URL } from "./config";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -8,19 +8,15 @@ export const checkResponse = (res) => {
   }
 };
 
-
+// Helper function for fetching
 function request(url, options) {
-  return request(url, options).then(checkResponse);
+  return fetch(url, options).then(checkResponse);
 }
 
 // GET request - public
 export const getItems = () => {
-  return request(`${baseUrl}/items`)
-    .then((data) => data.data) // Important: The backend returns { data: items }
-    .catch((error) => {
-      console.error("Error requesting items:", error);
-      throw error;
-    });
+  return request(`${BASE_URL}/items`)
+    .then((data) => data.data);
 };
 
 // POST request with auth
@@ -45,7 +41,7 @@ export const addItems = (data) => {
 // DELETE request with auth
 export const deleteItems = (id) => {
   const token = localStorage.getItem("jwt");
-  return request(`${baseUrl}/items/${id}`, {
+  return request(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +59,7 @@ export const deleteItems = (id) => {
 
 // Register a new user
 export const register = ({name, avatar, email, password}) => {
-  return request(`${baseUrl}/signup`, {
+  return request(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -80,7 +76,7 @@ export const register = ({name, avatar, email, password}) => {
 // Like an item
 export const addCardLike = (id) => {
   const token = localStorage.getItem("jwt");
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${BASE_URL}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -98,7 +94,7 @@ export const addCardLike = (id) => {
 // Remove like from item
 export const removeCardLike = (id) => {
   const token = localStorage.getItem("jwt");
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${BASE_URL}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
