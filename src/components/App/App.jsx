@@ -1,25 +1,27 @@
 import "./App.css";
-import Header from "../Header/Header.js";
-import Footer from "../Footer/Footer.js";
-import Main from "../Main/Main.js";
+import Header from "../Header/Header.jsx";
+import Footer from "../Footer/Footer.jsx";
+import Main from "../Main/Main.jsx";
 import { useState, useEffect } from "react";
-import ItemModal from "../ItemModal/ItemModal.js";
+import ItemModal from "../ItemModal/ItemModal.jsx";
 import {
   getForecastWeather,
   parseWeatherData,
-} from "../../utils/WeatherApi.js";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import AddItemModal from "../AddItemModal/AddItemModal.js";
-import RegisterModal from "../RegisterModal/RegisterModal.js";
-import LoginModal from "../LoginModal/LoginModal.js";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
-import logger from "../../utils/logger.js";
+} from "../../utils/WeatherApi.jsx";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import logger from "../../utils/logger.jsx";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Profile from "../Profile/Profile.js";
-import { deleteItems, addItems, getItems, addCardLike, removeCardLike, updateUserProfile } from "../../utils/api.js";
-import {register, login, checkToken} from "../../utils/api.js"
-import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
+import Profile from "../Profile/Profile.jsx";
+import { deleteItems, addItems, getItems, addCardLike, removeCardLike } from "../../utils/api.jsx";
+import { register, login, checkToken, updateUserProfile } from "../../utils/auth.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+
+import { runLoginTests } from '../../utils/test/TestLogin.jsx';
 
 function App() {
   logger("App");
@@ -33,6 +35,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
+  const [location, setLocation] = useState('');
 
   //check for token when web mounts
   // Check for token on mount
@@ -146,9 +149,8 @@ function App() {
 
   // User profile handlers
   const handleUpdateUser = ({ name, avatar }) => {
-    const token = localStorage.getItem("jwt");
     setIsLoading(true);
-    updateUserProfile(name, avatar, token)
+    updateUserProfile(name, avatar)  // No need to pass token here anymore
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
         handleCloseModal();
@@ -211,9 +213,13 @@ function App() {
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
+       // console.log("Weather API data:", data);
         const temperature = parseWeatherData(data);
+       // console.log("Parsed temperature:", temperature);
         logger(temperature);
-        // Fetch items after setting temperature
+        if (data.name) {
+          setLocation(data.name);
+        }
         setTemp(temperature);
         return getItems();
       })
@@ -226,7 +232,7 @@ function App() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   logger(temp);
   logger(currentTemperatureUnit);
@@ -236,11 +242,13 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
+
         <Header
           onCreateModal={handleCreateModal}
           onRegisterModal={handleRegisterModal}
           onLoginModal={handleLoginModal}
           isLoggedIn={isLoggedIn}
+          location={location}
         />
         <Routes>
           <Route
@@ -264,15 +272,17 @@ function App() {
                 onCreateModal={handleCreateModal}
                 onEditProfile={handleEditProfileModal}
                 onSignOut={handleSignOut}
-                cards={cards.filter(item => item.owner === currentUser?._id)}
-                //cards={cards}
+                //cards={cards.filter(item => !item.owner || item.owner === currentUser?._id)}
+                cards={cards}
                 onCardLike={handleCardLike}
               />
               </ProtectedRoute>
             }
           />
         </Routes>
-        <Footer />
+
+        <Footer
+        />
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}
@@ -286,6 +296,8 @@ function App() {
             onClose={handleCloseModal}
             onCardDelete={handleDeleteModal}
             isOwn={selectedCard.owner === currentUser?._id}
+            isLoggedIn={isLoggedIn}
+            onCardLike={handleCardLike}
           />
         )}
         {activeModal === "login" && (

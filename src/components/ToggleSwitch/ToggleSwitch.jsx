@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./ToggleSwitch.css";
-import { CurrentTemperatureUnitContext }from "../../contexts/CurrentTemperatureUnitContext.js";
-import logger from "../../utils/logger.js";
+import { CurrentTemperatureUnitContext }from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import logger from "../../utils/logger.jsx";
 
 const ToggleSwitch = () => {
   logger("ToggleSwitch");

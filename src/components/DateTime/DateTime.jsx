@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import log from "../../utils/logger.js";
+//import log from "../../utils/logger.jsx";
 
 export const DateTime = () => {
   //console.log("DateTime");

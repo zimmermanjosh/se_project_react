@@ -1,7 +1,7 @@
 import "./ItemCard.css";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.jsx";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   logger("ItemCard");
@@ -31,6 +31,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
         className="card__image"
         onClick={() => onSelectedCard(item)}
       />
+      <div className="card__header">
       <div className="card__name">{item.name}</div>
       {currentUser && (
         <button
@@ -41,6 +42,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
           ♥
         </button>
       )}
+    </div>
     </div>
   );
 };

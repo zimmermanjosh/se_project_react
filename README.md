@@ -46,7 +46,7 @@ The project includes a components directory with the following components:
     ├── components
     ├── images
     ├── index.css
-    ├── index.js
+    ├── index.jsx
     ├── reportWebVitals.js
     ├── setupTests.js
     ├── utils

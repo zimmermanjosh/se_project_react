@@ -1,1 +1,6 @@
-normalize.css
+src/vendor/normalize.css
+node_modules
+build
+dist
+.DS_Store
+coverage

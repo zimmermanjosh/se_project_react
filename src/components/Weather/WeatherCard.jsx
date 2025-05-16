@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import "./WeatherCard.css";
-import { weatherOptions } from "../../utils/Constants.js";
+import { weatherOptions } from "../../utils/config.jsx";
 
 //old weather card logic
 const WeatherCard = ({ weatherTemp, day, type }) => {

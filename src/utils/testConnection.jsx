@@ -1,4 +1,4 @@
-// testConnection.js
+// testConnection.jsx
 
 const fetch = require('node-fetch');
 

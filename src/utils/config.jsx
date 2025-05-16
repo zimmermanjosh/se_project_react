@@ -114,3 +114,5 @@ export const weatherAPIData = {
 };
 
 export const userNameProfile = "Joshua Zimmerman";
+
+export const BASE_URL = "http://localhost:3001";
