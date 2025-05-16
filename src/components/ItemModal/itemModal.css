@@ -12,19 +12,43 @@
 
 .preview__close-button {
   border: none;
-  background-image: url(../../images/modal/close.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
   width: 20px;
   height: 20px;
   position: absolute;
-  justify-content: flex-end;
   top: 24px;
   right: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  background-image: url(../../images/modal/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.preview__close-button::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: url(../../images/modal/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .preview__close-button:hover {
   cursor: pointer;
+}
+
+.delete__button_visible {
+  display: block;
+}
+
+.delete__button_hidden {
+  display: none;
 }
 
 .delete__button {
@@ -35,6 +59,14 @@
   justify-self: flex-end;
   /* grid-template-rows: ; */
 }
+
+.modal__image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .modal__image {
   width: 100%;
   max-height: 90vh;
@@ -42,5 +74,43 @@
 }
 
 .modal__item-name {
-  display: grid;
+ margin: 0;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.card__like-button {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.card__like-button_active {
+  color: #FF0000;
+  opacity: 1;
+}
+
+/* For the delete button visibility */
+.delete__button_visible {
+  display: block;
+}
+
+.delete__button_hidden {
+  display: none;
 }

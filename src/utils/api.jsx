@@ -63,24 +63,6 @@ export const deleteItems = (id) => {
     });
 };
 
-// AUTHENTICATION FUNCTIONS
-
-// Register a new user
-export const register = ({name, avatar, email, password}) => {
-  return request(`${BASE_URL}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, avatar, email, password }),
-  })
-    .then((data) => data.data)
-    .catch((error) => {
-      console.error("Error registering user:", error);
-      throw error;
-    });
-};
-
 // Like an item
 export const addCardLike = (id) => {
   const token = localStorage.getItem("jwt");

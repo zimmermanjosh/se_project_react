@@ -31,6 +31,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
         className="card__image"
         onClick={() => onSelectedCard(item)}
       />
+      <div className="card__header">
       <div className="card__name">{item.name}</div>
       {currentUser && (
         <button
@@ -41,6 +42,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
           ♥
         </button>
       )}
+    </div>
     </div>
   );
 };

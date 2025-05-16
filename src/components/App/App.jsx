@@ -272,20 +272,15 @@ function App() {
                 onCreateModal={handleCreateModal}
                 onEditProfile={handleEditProfileModal}
                 onSignOut={handleSignOut}
-                cards={cards.filter(item => item.owner === currentUser?._id)}
-                //cards={cards}
+                //cards={cards.filter(item => !item.owner || item.owner === currentUser?._id)}
+                cards={cards}
                 onCardLike={handleCardLike}
               />
               </ProtectedRoute>
             }
           />
         </Routes>
-        <button
-          onClick={runLoginTests}
-          style={{ position: 'fixed', bottom: '10px', right: '10px', zIndex: 9999 }}
-        >
-          Test Login
-        </button>
+
         <Footer
         />
         {activeModal === "create" && (
@@ -301,6 +296,8 @@ function App() {
             onClose={handleCloseModal}
             onCardDelete={handleDeleteModal}
             isOwn={selectedCard.owner === currentUser?._id}
+            isLoggedIn={isLoggedIn}
+            onCardLike={handleCardLike}
           />
         )}
         {activeModal === "login" && (

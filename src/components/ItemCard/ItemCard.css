@@ -2,10 +2,20 @@
   font-family: "CabinetGrotesk", Arial, sans-serif;
   font-weight: 500;
   line-height: 20px;
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  background-color: white;
+  padding: 2px 12px;
+  max-height: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
 }
 
 .card__image {
@@ -13,6 +23,10 @@
   height: 328px;
   border-radius: 10px;
   cursor: pointer;
+
+  object-fit: contain;
+
+  box-sizing: border-box;
 }
 
 .card {
@@ -20,9 +34,6 @@
 }
 
 .card__like-button {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
   background: none;
   border: none;
   font-size: 26px;
@@ -48,4 +59,15 @@
   color: red;
   font-family: "CabinetGrotesk", Arial, sans-serif;
   font-weight: 500;
+}
+
+.card__header {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
