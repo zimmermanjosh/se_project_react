@@ -22,6 +22,8 @@ import { register, login, checkToken, updateUserProfile } from "../../utils/auth
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 import { runLoginTests } from '../../utils/test/TestLogin.jsx';
+import version from "src/version.jsx";
+
 
 function App() {
   logger("App");
@@ -238,12 +240,17 @@ function App() {
   logger(currentTemperatureUnit);
 
   return (
+
       <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
 
         <Header
+          version={version}
+          onSignOut={handleSignOut}
+          onToggleSwitchChange={handleToggleSwitchChange}
+          currentTemperatureUnit={currentTemperatureUnit}
           onCreateModal={handleCreateModal}
           onRegisterModal={handleRegisterModal}
           onLoginModal={handleLoginModal}

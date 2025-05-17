@@ -1,0 +1,4 @@
+  :root {
+    --font-family: 'Cabinet Grotesk', sans-serif;
+    /*font-family: var(--font-family); in object css file*/
+  }

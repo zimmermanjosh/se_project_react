@@ -1,10 +1,12 @@
+
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
   padding: 0 20px;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
 }
 
@@ -35,7 +37,7 @@
 .header__button {
   border: none;
   background-color: white;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 16px;
   line-height: 1.25;

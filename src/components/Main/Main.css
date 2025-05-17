@@ -1,7 +1,7 @@
 .main {
   padding: 0 20px;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: var(--font-family);
+
   font-weight: 700;
 }
 

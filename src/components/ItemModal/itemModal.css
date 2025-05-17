@@ -1,5 +1,5 @@
 .modal {
-  font-family: "Cabinet Grotesk", sans-serif;
+  font-family: var(--font-family);
   display: flex;
   flex-direction: column;
   position: absolute;
