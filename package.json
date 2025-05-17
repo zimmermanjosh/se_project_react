@@ -38,10 +38,8 @@
     "eject": "react-scripts eject",
     "clean:local": "rm -rf build && rm -rf node_modules",
     "prebuild:nvm": "npm run clean:local && npm install",
-    "lint": "eslint . && jsxLint",
-    "lint:fix": "eslint . --fix && jsxLintFix",
-    "jsxLint" : "eslint \\\"**/*.{js,jsx}\\\"",
-    "jsxLintFix" :" eslint \\\"**/*.{js,jsx}\\\" --fix\"",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"**/*.{js,jsx}\" --fix",
     "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

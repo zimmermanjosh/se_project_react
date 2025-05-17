@@ -21,8 +21,7 @@ import { deleteItems, addItems, getItems, addCardLike, removeCardLike } from "..
 import { register, login, checkToken, updateUserProfile } from "../../utils/auth.jsx";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
-import { runLoginTests } from '../../utils/test/TestLogin.jsx';
-import version from "src/version.jsx";
+import version from "../../version.jsx";
 
 
 function App() {
