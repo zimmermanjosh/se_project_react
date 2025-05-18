@@ -38,7 +38,7 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn, onCardLike
 
         {/* Header with name and like button */}
         <div className="modal__header">
-          <h3 className="modal__item-name">{selectedCard.name}</h3>
+          {/* <h3 className="modal__item-name">{selectedCard.name}</h3> */}
 
           {currentUser && (
             <button
@@ -60,9 +60,11 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn, onCardLike
           />
         </div>
 
-        {/* Weather info and delete button */}
         <div className="modal__footer">
-          <p className="modal__weather-type">Weather type: {selectedCard.weather}</p>
+          <div className="modal__info">
+            <h3 className="modal__item-name">{selectedCard.name}</h3>
+            <p className="modal__weather-type">Weather: {selectedCard.weather}</p>
+          </div>
 
           {isLoggedIn && isOwn && (
             <button
