@@ -13,16 +13,11 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn }) => {
   console.log("- selectedCard.owner:", selectedCard.owner);
   console.log("- currentUser?._id:", currentUser?._id);
 
-
-  // Simplified ownership check
   const isOwn = selectedCard.owner === currentUser?._id || !selectedCard.owner;
   console.log("- isOwn calculation:", isOwn);
-  console.log("- selectedCard.owner === currentUser?._id:", selectedCard.owner === currentUser?._id);
-  console.log("- !selectedCard.owner:", !selectedCard.owner);
-
 
   const showDeleteButton = isLoggedIn && isOwn;
-  console.log("- FINAL showDeleteButton:", showDeleteButton);// Check if selectedCard is defined and has the required properties
+  console.log("- FINAL showDeleteButton:", showDeleteButton);
 
   return (
     <div className="modal">
@@ -33,7 +28,6 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn }) => {
           className="preview__close-button"
         ></button>
 
-        {/* Image container - bigger in upper half */}
         <div className="modal__image-container">
           <img
             className="modal__image"
@@ -49,9 +43,9 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn }) => {
             <p className="modal__weather-type">Weather: {selectedCard.weather}</p>
           </div>
 
-          {isLoggedIn && isOwn && (
+          {showDeleteButton && (
             <button
-              className="delete__button"
+              className="modal__delete-button"
               onClick={() => onCardDelete(selectedCard)}
             >
               Delete item

@@ -7,7 +7,6 @@ const SideBar = ({ onEditProfile, onSignOut }) => {
 
   const currentUser = useContext(CurrentUserContext);
 
-  // Create a function to render the avatar or first letter placeholder
   const renderAvatar = () => {
     return currentUser?.avatar ? (
       <img src={currentUser.avatar} className="sidebar__avatar" alt="user avatar" />

@@ -1,9 +1,8 @@
 
 import React, { useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "./LoginModal.css";
 
-const LoginModal = ({ isOpen, onClose, onLogin, onRegisterClick, isLoading }) => {
+const LoginModal = ({ isOpen, onClose, onLogin, onRegisterClick, isLoading, loginError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,45 +11,84 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegisterClick, isLoading }) =>
     onLogin({ email, password });
   };
 
+  if (!isOpen) return null;
+
+  // Check if form is filled to determine button color
+  const isFormFilled = email.trim() && password.trim();
+
   return (
-    <ModalWithForm
-      title="Log in"
-      buttonText={isLoading ? "Logging in..." : "Log in"}
-      onClose={onClose}
-      isOpen={isOpen}
-      onSubmit={handleSubmit}
-    >
-      <label className="modal__input-label">
-        Email
-        <input
-          className="modal__input"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-      </label>
-      <label className="modal__input-label">
-        Password
-        <input
-          className="modal__input"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-      </label>
-      <p className="modal__switch">
-        {"Don't have an account?"}
-        <span className="modal__switch-link" onClick={onRegisterClick}>
-          Sign up
-        </span>
-      </p>
-    </ModalWithForm>
+    <div className="login-modal">
+      <div className="login-modal__content">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="login-modal__close-button"
+          type="button"
+        >
+          ✕
+        </button>
+
+        <div className="login-modal__body">
+          <h2 className="login-modal__title">Log in</h2>
+
+          <form onSubmit={handleSubmit} className="login-modal__form">
+            {/* Email field */}
+            <div className="login-modal__field">
+              <label className="login-modal__label">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className={`login-modal__input ${loginError ? 'login-modal__input--error' : ''}`}
+              />
+            </div>
+
+            {/* Password field */}
+            <div className="login-modal__field">
+              <label className="login-modal__label">Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="login-modal__input"
+              />
+            </div>
+
+            {/* Error message */}
+            {loginError && (
+              <div className="login-modal__error">
+                Incorrect password
+              </div>
+            )}
+
+            {/* Button container */}
+            <div className="login-modal__button-container">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`login-modal__submit-button ${isFormFilled ? 'login-modal__submit-button--filled' : ''}`}
+              >
+                {isLoading ? "Logging in..." : "Log in"}
+              </button>
+              <span className="login-modal__or">or</span>
+              <button
+                onClick={onRegisterClick}
+                type="button"
+                className="login-modal__register-button"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -9,15 +9,15 @@
 .sidebar__info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Changed from center to match Figma */
+  align-items: flex-start;
   gap: 20px;
 }
 
 .sidebar__user-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Changed from center to match Figma */
-  gap: 16px; /* Increased gap to match Figma spacing */
+  align-items: flex-start;
+  gap: 16px;
   width: 100%;
 }
 
@@ -25,7 +25,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover; /* Changed from contain to cover for better image display */
+  object-fit: cover;
   margin-bottom: 8px;
 }
 
@@ -63,7 +63,7 @@
   padding: 0;
   text-align: left;
   transition: opacity 0.3s ease;
-  text-decoration: none; /* NO underline to match Figma */
+  text-decoration: none;
 }
 
 .sidebar__edit-button:hover {
@@ -81,7 +81,7 @@
   padding: 0;
   text-align: left;
   transition: opacity 0.3s ease;
-  text-decoration: none; /* NO underline to match Figma */
+  text-decoration: none;
 }
 
 .sidebar__logout-button:hover {

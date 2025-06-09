@@ -1,3 +1,4 @@
+
 .modal {
   font-family: var(--font-family);
   display: flex;
@@ -116,3 +117,22 @@
   background-color: rgba(255, 77, 0, 0.1);
 }
 
+/* Also keep the old class name for compatibility */
+.delete__button {
+  background: none;
+  border: none;
+  color: #FF4D00;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.delete__button:hover {
+  opacity: 0.7;
+  background-color: rgba(255, 77, 0, 0.1);
+}

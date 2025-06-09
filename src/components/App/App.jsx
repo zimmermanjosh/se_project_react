@@ -1,8 +1,7 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Main from "../Main/Main.jsx";
-import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import {
   getForecastWeather,
@@ -14,6 +13,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal.jsx";
 import logger from "../../utils/logger.jsx";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile.jsx";
@@ -35,11 +35,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
   const history = useNavigate();
   const [location, setLocation] = useState('');
+  const [loginError, setLoginError] = useState(false);
 
-  //check for token when web mounts
-  // Check for token on mount
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -55,7 +55,6 @@ function App() {
     }
   }, []);
 
-
   //modal handlers
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -63,6 +62,8 @@ function App() {
 
   const handleCloseModal = () => {
     setActiveModal("");
+    setItemToDelete(null);
+    setLoginError(false);
   };
 
   const handleSelectedCard = (card) => {
@@ -95,7 +96,6 @@ function App() {
     setIsLoading(true);
     register({ name, avatar, email, password })
       .then(() => {
-        // After registration, log the user in automatically
         return login({ email, password });
       })
       .then((data) => {
@@ -118,28 +118,31 @@ function App() {
       });
   };
 
-  const handleLogin = ({ email, password }) => {
-    setIsLoading(true);
-    login({ email, password })
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
-          return checkToken(data.token);
-        }
-      })
-      .then((userData) => {
-        setCurrentUser(userData);
-        setIsLoggedIn(true);
-        handleCloseModal();
-        history("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+const handleLogin = ({ email, password }) => {
+  setIsLoading(true);
+  setLoginError(false);
+
+  login({ email, password })
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        return checkToken(data.token);
+      }
+    })
+    .then((userData) => {
+      setCurrentUser(userData);
+      setIsLoggedIn(true);
+      handleCloseModal();
+      history("/");
+    })
+    .catch((err) => {
+      console.log("Login error:", err);
+      setLoginError(true);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+};
 
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
@@ -148,10 +151,9 @@ function App() {
     history("/");
   };
 
-  // User profile handlers
   const handleUpdateUser = ({ name, avatar }) => {
     setIsLoading(true);
-    updateUserProfile(name, avatar)  // No need to pass token here anymore
+    updateUserProfile(name, avatar)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
         handleCloseModal();
@@ -164,89 +166,103 @@ function App() {
       });
   };
 
-// item handlers
-  const handleDeleteModal = (card) => {
-    deleteItems(card._id)
-      .then(() => {
-        handleCloseModal();
-        const updatedCards = cards.filter((item) => item._id !== card._id);
-        setCards(updatedCards);
-      })
-      .catch((error) => {
-        console.error("Error deleting item:", error);
-      });
-  };
+const handleDeleteModal = (card) => {
+  console.log("🔧 Opening delete confirmation for:", card.name);
+  setItemToDelete(card);
+  setActiveModal("confirm-delete");
+};
 
-  const onAddItem = (values) => {
+  const handleConfirmDelete = () => {
+  if (!itemToDelete) return;
+
+  console.log("🔧 Confirming delete for:", itemToDelete.name);
+
+  deleteItems(itemToDelete._id)
+    .then(() => {
+      console.log("✅ Item deleted successfully");
+      handleCloseModal();
+      const updatedCards = cards.filter((item) => item._id !== itemToDelete._id);
+      setCards(updatedCards);
+      setItemToDelete(null);
+    })
+    .catch((error) => {
+      console.error("Error deleting item:", error);
+      alert("Failed to delete item. Please try again.");
+    });
+};
+
+
+const onAddItem = (values) => {
   addItems(values)
     .then((res) => {
-      // Only add to state if backend creation succeeds
       setCards((cards) => [res, ...cards]);
       handleCloseModal();
     })
     .catch((error) => {
       console.error("Error adding item:", error);
-      // DON'T add to state if creation fails!
-      // Maybe show an error message to user
+      alert("Failed to add item. Please try again.");
     });
 };
 
   const handleCardLike = ({ id, isLiked }) => {
-    const token = localStorage.getItem("jwt");
-    // Check if this card is now liked
-    isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-      addCardLike(id, token)
-        .then((updatedCard) => {
-          setCards((items) =>
-            items.map((item) => (item._id === id ? updatedCard : item))
-          );
-        })
-        .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-      removeCardLike(id, token)
-        .then((updatedCard) => {
-          setCards((items) =>
-            items.map((item) => (item._id === id ? updatedCard : item))
-          );
-        })
-        .catch((err) => console.log(err));
-  };
+  const token = localStorage.getItem("jwt");
 
-  useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-       // console.log("Weather API data:", data);
-        const temperature = parseWeatherData(data);
-       // console.log("Parsed temperature:", temperature);
-        logger(temperature);
-        if (data.name) {
-          setLocation(data.name);
-        }
-        setTemp(temperature);
-        return getItems();
-      })
-      .then((data) => {
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid item data");
-        }
-        setCards(data);
+  // Check if this card is now liked
+  if (isLiked) {
+    // Add like
+    addCardLike(id, token)
+      .then((updatedCard) => {
+        setCards((items) =>
+          items.map((item) => (item._id === id ? updatedCard : item))
+        );
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error liking item:", error);
       });
-  }, [isLoggedIn]);
+  } else {
+    // Remove like
+    removeCardLike(id, token)
+      .then((updatedCard) => {
+        setCards((items) =>
+          items.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch((error) => {
+        console.error("Error removing like:", error);
+      });
+  }
+};
+
+useEffect(() => {
+  getForecastWeather()
+    .then((data) => {
+      const temperature = parseWeatherData(data);
+      logger(temperature);
+      if (data.name) {
+        setLocation(data.name);
+      }
+      setTemp(temperature);
+      return getItems();
+    })
+    .then((data) => {
+      if (!Array.isArray(data)) {
+        throw new Error("Invalid item data");
+      }
+      setCards(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}, [isLoggedIn]);
 
   logger(temp);
   logger(currentTemperatureUnit);
 
   return (
-
-      <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-
         <Header
           version={version}
           onSignOut={handleSignOut}
@@ -280,7 +296,6 @@ function App() {
                 onCreateModal={handleCreateModal}
                 onEditProfile={handleEditProfileModal}
                 onSignOut={handleSignOut}
-                //cards={cards.filter(item => !item.owner || item.owner === currentUser?._id)}
                 cards={cards}
                 onCardLike={handleCardLike}
               />
@@ -289,8 +304,8 @@ function App() {
           />
         </Routes>
 
-        <Footer
-        />
+        <Footer />
+
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}
@@ -315,6 +330,7 @@ function App() {
             onLogin={handleLogin}
             onRegisterClick={() => setActiveModal("register")}
             isLoading={isLoading}
+            loginError={loginError}
           />
         )}
         {activeModal === "register" && (
@@ -334,9 +350,18 @@ function App() {
             isLoading={isLoading}
           />
         )}
-  </CurrentTemperatureUnitContext.Provider>
-</CurrentUserContext.Provider>
-);
+
+        {activeModal === "confirm-delete" && (
+          <ConfirmDeleteModal
+            isOpen={activeModal === "confirm-delete"}
+            onClose={handleCloseModal}
+            onConfirm={handleConfirmDelete}
+            itemName={itemToDelete?.name}
+          />
+        )}
+      </CurrentTemperatureUnitContext.Provider>
+    </CurrentUserContext.Provider>
+  );
 }
 
 export default App;

@@ -17,6 +17,11 @@ const ConfirmDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
           <h3 className="confirm-modal__title">
             Are you sure you want to delete this item?
           </h3>
+          {itemName && (
+            <p className="confirm-modal__item-name">
+              {itemName}
+            </p>
+          )}
           <p className="confirm-modal__subtitle">
             This action is irreversible.
           </p>
