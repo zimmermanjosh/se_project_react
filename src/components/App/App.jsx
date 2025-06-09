@@ -178,16 +178,18 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    addItems(values)
-      .then((res) => {
-        setCards((cards) => [res, ...cards]);
-        handleCloseModal();
-      })
-      .catch((error) => {
-        console.error("Error adding item:", error);
-      });
-    console.log("onAddItem", values);
-  };
+  addItems(values)
+    .then((res) => {
+      // Only add to state if backend creation succeeds
+      setCards((cards) => [res, ...cards]);
+      handleCloseModal();
+    })
+    .catch((error) => {
+      console.error("Error adding item:", error);
+      // DON'T add to state if creation fails!
+      // Maybe show an error message to user
+    });
+};
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");

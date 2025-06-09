@@ -48,7 +48,14 @@ export const addItems = (data) => {
 
 // DELETE request with auth
 export const deleteItems = (id) => {
+  console.log("🔧 Frontend deleteItems called with:", id);
+  console.log("🔧 ID type:", typeof id);
+  console.log("🔧 ID length:", id?.length);
+
   const token = localStorage.getItem("jwt");
+  const fullUrl = `${BASE_URL}/items/${id}`;
+  console.log("🔧 Full delete URL:", fullUrl);
+
   return request(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {

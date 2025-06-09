@@ -31,15 +31,15 @@ const SideBar = ({ onEditProfile, onSignOut }) => {
           >
             Change profile data
           </button>
+          <button
+            className="sidebar__logout-button"
+            type="button"
+            onClick={onSignOut}
+          >
+            Log out
+          </button>
         </div>
       </div>
-      <button
-        className="sidebar__logout-button"
-        type="button"
-        onClick={onSignOut}
-      >
-        Log out
-      </button>
     </div>
   );
 };

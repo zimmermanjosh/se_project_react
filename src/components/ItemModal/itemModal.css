@@ -116,9 +116,3 @@
   background-color: rgba(255, 77, 0, 0.1);
 }
 
-/* Remove old button classes */
-.delete__button,
-.delete__button_visible,
-.delete__button_hidden {
-  display: none;
-}

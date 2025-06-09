@@ -1,7 +1,6 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -10,22 +9,24 @@
 .sidebar__info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to match Figma */
   gap: 20px;
 }
 
 .sidebar__user-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start; /* Changed from center to match Figma */
+  gap: 16px; /* Increased gap to match Figma spacing */
+  width: 100%;
 }
 
 .sidebar__avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover; /* Changed from contain to cover for better image display */
+  margin-bottom: 8px;
 }
 
 .sidebar__avatar-placeholder {
@@ -39,6 +40,7 @@
   align-items: center;
   font-size: 48px;
   font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .sidebar__name {
@@ -46,8 +48,8 @@
   font-size: 20px;
   font-weight: 700;
   color: black;
-  text-align: center;
   margin: 0;
+  margin-bottom: 8px;
 }
 
 .sidebar__edit-button {
@@ -56,10 +58,12 @@
   color: #000;
   font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   padding: 0;
+  text-align: left;
   transition: opacity 0.3s ease;
+  text-decoration: none; /* NO underline to match Figma */
 }
 
 .sidebar__edit-button:hover {
@@ -69,15 +73,15 @@
 .sidebar__logout-button {
   background: none;
   border: none;
-  color: #FF4D00;
+  color: #000;
   font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   padding: 0;
-  margin-top: 20px;
-  align-self: center;
+  text-align: left;
   transition: opacity 0.3s ease;
+  text-decoration: none; /* NO underline to match Figma */
 }
 
 .sidebar__logout-button:hover {
