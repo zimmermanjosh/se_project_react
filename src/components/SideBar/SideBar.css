@@ -1,24 +1,6 @@
-/*.sidebar__image {
-  align-items: center;
-  gap: 16px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  min-width: 100px;
-}
-
-.sidebar__name {
-  font-family: "Cabinet Grotesk";
-  font-size: 20px;
-  font-weight: 700;
-  color: black;
-  text-align: center;
-}*/
-
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -27,22 +9,24 @@
 .sidebar__info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 }
 
 .sidebar__user-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
 }
 
 .sidebar__avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
+  margin-bottom: 8px;
 }
 
 .sidebar__avatar-placeholder {
@@ -56,27 +40,30 @@
   align-items: center;
   font-size: 48px;
   font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .sidebar__name {
-  font-family: "Cabinet Grotesk";
+  font-family: var(--font-family);
   font-size: 20px;
   font-weight: 700;
   color: black;
-  text-align: center;
   margin: 0;
+  margin-bottom: 8px;
 }
 
 .sidebar__edit-button {
   background: none;
   border: none;
   color: #000;
-  font-family: "Cabinet Grotesk";
+  font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   padding: 0;
+  text-align: left;
   transition: opacity 0.3s ease;
+  text-decoration: none;
 }
 
 .sidebar__edit-button:hover {
@@ -86,15 +73,15 @@
 .sidebar__logout-button {
   background: none;
   border: none;
-  color: #FF4D00;
-  font-family: "Cabinet Grotesk";
+  color: #000;
+  font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   padding: 0;
-  margin-top: 20px;
-  align-self: center;
+  text-align: left;
   transition: opacity 0.3s ease;
+  text-decoration: none;
 }
 
 .sidebar__logout-button:hover {

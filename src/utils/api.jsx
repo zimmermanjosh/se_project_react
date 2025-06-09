@@ -24,6 +24,7 @@ export const getItems = () => {
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
+
   return request(`${BASE_URL}/items`, { headers })
     .then((data) => data.data);
 };
@@ -39,28 +40,26 @@ export const addItems = (data) => {
     },
     body: JSON.stringify(data),
   })
-    .then((data) => data.data)
-    .catch((error) => {
-      console.error("Error adding items:", error);
-      throw error;
-    });
+    .then((data) => data.data);
+
 };
 
 // DELETE request with auth
 export const deleteItems = (id) => {
+  console.log("🔧 Frontend deleteItems called with:", id);
+
   const token = localStorage.getItem("jwt");
+  const fullUrl = `${BASE_URL}/items/${id}`;
+  console.log("🔧 Full delete URL:", fullUrl);
+
   return request(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     },
-  })
-    .then((res) => checkResponse(res))
-    .catch((error) => {
-      console.error("Error deleting items:", error);
-      throw error;
-    });
+  });
+
 };
 
 // Like an item
@@ -73,11 +72,8 @@ export const addCardLike = (id) => {
       "Authorization": `Bearer ${token}`,
     },
   })
-    .then((data) => data.data)
-    .catch((error) => {
-      console.error("Error liking item:", error);
-      throw error;
-    });
+    .then((data) => data.data);
+
 };
 
 // Remove like from item
@@ -90,9 +86,6 @@ export const removeCardLike = (id) => {
       "Authorization": `Bearer ${token}`,
     },
   })
-    .then((data) => data.data)
-    .catch((error) => {
-      console.error("Error removing like:", error);
-      throw error;
-    });
+    .then((data) => data.data);
+
 };

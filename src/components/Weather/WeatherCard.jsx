@@ -3,7 +3,6 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/config.jsx";
 
-//old weather card logic
 const WeatherCard = ({ weatherTemp, day, type }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -12,7 +11,7 @@ const WeatherCard = ({ weatherTemp, day, type }) => {
   });
 
   if (imageSrc) {
-    const imageSrcUrl = imageSrc.url || ""; // Added a check here
+    const imageSrcUrl = imageSrc.url || "";
     return (
       <section className="weather" id="weather">
         <div className="weather__info">

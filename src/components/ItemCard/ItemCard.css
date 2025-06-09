@@ -1,5 +1,5 @@
 .card__name {
-  font-family: "CabinetGrotesk", Arial, sans-serif;
+  font-family: var(--font-family);
   font-weight: 500;
   line-height: 20px;
 
@@ -57,7 +57,7 @@
 
 .card__error {
   color: red;
-  font-family: "CabinetGrotesk", Arial, sans-serif;
+  font-family: var(--font-family);
   font-weight: 500;
 }
 

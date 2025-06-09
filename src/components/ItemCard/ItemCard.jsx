@@ -7,13 +7,10 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   logger("ItemCard");
 
   const currentUser = useContext(CurrentUserContext);
-
-  // Check if item is defined and has the required properties
   if (!item || !item.imageUrl || !item.name) {
     return <div className="card__error">Invalid item data</div>;
   }
 
-  // Check if the current user has liked this item
   const isLiked = item.likes && currentUser
     ? item.likes.some(id => id === currentUser._id)
     : false;

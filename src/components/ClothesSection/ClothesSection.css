@@ -1,6 +1,6 @@
 .clothes__section {
     display: flex;
-    font-family: "Cabinet Grotesk";
+    font-family: var(--font-family);
     font-size: 20px;
     font-weight: 500;
     flex-direction: column;
@@ -15,7 +15,7 @@
     display: flex;
     gap: 30px;
   }
-  
+
   .clothes__button {
     border: none;
     height: 25px;
@@ -35,6 +35,5 @@
     gap: 20px;
     justify-content: center;
     color: black;
-   
+
   }
-  

@@ -1,7 +1,7 @@
 .modal__input-label {
   display: flex;
   flex-direction: column;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: var(--font-family);
   font-size: 16px;
   margin-bottom: 24px;
 }
@@ -12,7 +12,7 @@
   margin-top: 8px;
   padding: 8px 0;
   font-size: 16px;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: var(--font-family);
 }
 
 .modal__input:focus {
