@@ -37,18 +37,8 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn, onCardLike
         ></button>
 
         {/* Header with name and like button */}
-        <div className="modal__header">
-          {/* <h3 className="modal__item-name">{selectedCard.name}</h3> */}
-
-          {currentUser && (
-            <button
-              type="button"
-              className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
-              onClick={handleLikeClick}
-            >
-              ♥
-            </button>
-          )}
+         <div className="modal__header">
+          <h3 className="modal__item-name">{selectedCard.name}</h3>
         </div>
 
         {/* Image container */}
@@ -68,7 +58,7 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn, onCardLike
 
           {isLoggedIn && isOwn && (
             <button
-              className="delete__button"
+              className={deleteButtonClassName}
               onClick={() => onCardDelete(selectedCard)}
             >
               Delete Item

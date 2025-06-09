@@ -49,11 +49,7 @@ const Header = ({
         {isLoggedIn ? (
           <>
             <div>
-              <button
-                type="text"
-                onClick={onCreateModal}
-                className="header__button"
-              >
+              <button type="text" onClick={onCreateModal} className="header__button">
                 + Add clothes
               </button>
             </div>
@@ -64,18 +60,10 @@ const Header = ({
           </>
         ) : (
           <>
-            <button
-              type="text"
-              onClick={onRegisterModal}
-              className="header__button"
-            >
+            <button type="text" onClick={onRegisterModal} className="header__button">
               Sign Up
             </button>
-            <button
-              type="text"
-              onClick={onLoginModal}
-              className="header__button"
-            >
+            <button type="text" onClick={onLoginModal} className="header__button">
               Log In
             </button>
           </>
