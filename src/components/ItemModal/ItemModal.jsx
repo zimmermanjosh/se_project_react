@@ -8,20 +8,21 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn }) => {
 
   const currentUser = useContext(CurrentUserContext);
 
-  // current user is the owner of the item
+  // Simplified ownership check
   const isOwn = selectedCard.owner === currentUser?._id || !selectedCard.owner;
-  const canDelete = isLoggedIn && isOwn;
+  const showDeleteButton = isLoggedIn && isOwn;
 
   return (
     <div className="modal">
       <div className="modal__content">
+        {/* Close button */}
         <button
           type="button"
           onClick={onClose}
           className="preview__close-button"
         ></button>
 
-        {/* Image container - bigger in upper half */}
+        {/* Big image taking up most of the modal */}
         <div className="modal__image-container">
           <img
             className="modal__image"
@@ -30,16 +31,16 @@ const ItemModal = ({ selectedCard, onClose, onCardDelete, isLoggedIn }) => {
           />
         </div>
 
-        {/* Bottom section with name, weather, and delete button */}
+        {/* Bottom section exactly like Figma */}
         <div className="modal__footer">
           <div className="modal__info">
             <p className="modal__item-name">{selectedCard.name}</p>
             <p className="modal__weather-type">Weather: {selectedCard.weather}</p>
           </div>
 
-          {canDelete && (
+          {showDeleteButton && (
             <button
-              className="delete__button"
+              className="modal__delete-button"
               onClick={() => onCardDelete(selectedCard)}
             >
               Delete item
