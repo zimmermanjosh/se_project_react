@@ -195,7 +195,8 @@ const handleDeleteModal = (card) => {
 const onAddItem = (values) => {
   addItems(values)
     .then((res) => {
-      setCards((cards) => [res, ...cards]);
+      // Add to front of array (newest first)
+      setCards((prevCards) => [res, ...prevCards]);
       handleCloseModal();
     })
     .catch((error) => {
@@ -248,12 +249,17 @@ useEffect(() => {
       if (!Array.isArray(data)) {
         throw new Error("Invalid item data");
       }
-      setCards(data);
+      // Sort cards by creation date (newest first)
+      const sortedCards = data.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      setCards(sortedCards);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
 }, [isLoggedIn]);
+
 
   logger(temp);
   logger(currentTemperatureUnit);
@@ -287,25 +293,22 @@ useEffect(() => {
               />
             }
           />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Profile
-                onSelectedCard={handleSelectedCard}
-                onCreateModal={handleCreateModal}
-                onEditProfile={handleEditProfileModal}
-                onSignOut={handleSignOut}
-                cards={cards}
-                onCardLike={handleCardLike}
-              />
-              </ProtectedRoute>
-            }
+         <Route path="/profile"
+          element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+          <Profile
+            onSelectedCard={handleSelectedCard}
+            onCreateModal={handleCreateModal}
+            onEditProfile={handleEditProfileModal}
+            onSignOut={handleSignOut}
+            cards={cards.filter(item => !item.owner || item.owner === currentUser?._id)} // Include items without owner
+            onCardLike={handleCardLike}
           />
+          </ProtectedRoute>
+          }
+        />
         </Routes>
-
         <Footer />
-
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}
