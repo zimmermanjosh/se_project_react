@@ -42,7 +42,9 @@
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix",
     "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "github:deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* zimemrman_joshua@testwtwr.jumpingcrab.com:~/frontend"
+
   },
   "browserslist": {
     "production": [
