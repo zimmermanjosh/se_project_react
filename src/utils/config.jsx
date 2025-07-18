@@ -115,4 +115,9 @@ export const weatherAPIData = {
 
 export const userNameProfile = "Joshua Zimmerman";
 
-export const BASE_URL = "http://localhost:3001";
+// removed and updated 20250718
+//export const BASE_URL = "http://localhost:3001";
+
+export const BASE_URL = process.env.NODE_ENV === "production"
+  ? "https://api.testwtwr.jumpingcrab.com"
+  : "http://localhost:3001";

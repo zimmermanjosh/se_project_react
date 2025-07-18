@@ -2,7 +2,7 @@
   "name": "se_project_react",
   "version": "0.4.0",
   "private": true,
-  "homepage": "https://zimmermanjoshua.github.io/se_project_react",
+  "homepage": "https://testwtwr.jumpingcrab.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -42,7 +42,9 @@
     "lint:fix": "eslint \"**/*.{js,jsx}\" --fix",
     "nvm_use": "chmod +x scripts/build.sh && scripts/build.sh",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "github:deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* zimemrman_joshua@testwtwr.jumpingcrab.com:~/frontend"
+
   },
   "browserslist": {
     "production": [
