@@ -119,5 +119,5 @@ export const userNameProfile = "Joshua Zimmerman";
 //export const BASE_URL = "http://localhost:3001";
 
 export const BASE_URL = process.env.NODE_ENV === "production"
-  ? "http://api.testwtwr.jumpingcrab.com" ||  "https://api.testwtwr.jumpingcrab.com"
+  ? "https://api.testwtwr.jumpingcrab.com"
   : "http://localhost:3001";
